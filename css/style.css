@@ -1,0 +1,98 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(../assets/fonts/Montserrat-Black.ttf) format("truetype"),
+    url(../assets/fonts/Montserrat-Italic.ttf) format("truetype"),
+    url(../assets/fonts/Montserrat-Light.ttf) format("truetype"),
+    url(../assets/fonts/Montserrat-Medium.ttf) format("truetype"),
+    url(../assets/fonts/Montserrat-Thin.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../assets/fonts/Montserrat-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url(../assets/fonts/Montserrat-SemiBold.ttf) format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../assets/fonts/Montserrat-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-size: normal;
+}
+
+/*--- Global Styles----*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 84px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+h3 {
+  font-size: 2rem; /*32px*/
+  font-weight: 700;
+  line-height: 48px;
+}
+
+h4 {
+  font-size: 1.5rem; /*24px*/
+  font-weight: 700;
+  line-height: 36px;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+p {
+  font-size: 1rem; /*16px*/
+  font-weight: 400;
+  line-height: 24px;
+}
+
+span {
+  font-size: 1rem; /*16px*/
+  font-weight: 100;
+  line-height: 24px;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
