@@ -7,6 +7,7 @@
   --text-body-primary: #111;
   --text-body-secondary: #7a8a99;
   --text-body-tertiary: #f8f8f8;
+  --hr-stroke-color: rgba(209, 213, 219, 0.5);
 }
 @font-face {
   font-family: "Montserrat";
@@ -302,4 +303,46 @@ header {
 
 .btn--full-width {
   width: 100%;
+}
+
+/* --- footer --- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--color-primary);
+  padding: 16px 24px;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__list {
+  display: flex;
+  gap: 12px;
+}
+
+.footer__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__hr {
+  border: 1px solid var(--hr-stroke-color);
+}
+
+.footer__copyright {
+  font-size: 14px;
+  text-align: center;
+  color: var(--text-body-tertiary);
+}
+
+@media (max-width: 1024px) {
+  .footer__content {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
