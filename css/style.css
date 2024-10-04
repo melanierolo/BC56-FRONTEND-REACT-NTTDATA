@@ -1,3 +1,9 @@
+:root {
+  --color-primary: #0d47a1;
+  --color-secondary: #ffc107;
+  --color-white: #f8f8f8;
+  --text-body-primary: #111;
+}
 @font-face {
   font-family: "Montserrat";
   src: url(../assets/fonts/Montserrat-Black.ttf) format("truetype"),
@@ -15,11 +21,11 @@
 }
 
 @font-face {
-    font-family: "Montserrat";
-    src: url(../assets/fonts/Montserrat-SemiBold.ttf) format("truetype");
-    font-weight: 600;
-    font-style: normal;
-  }
+  font-family: "Montserrat";
+  src: url(../assets/fonts/Montserrat-SemiBold.ttf) format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "Montserrat";
@@ -38,7 +44,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  color: #333;
+  color: var(--text-body-primary);
 }
 
 h1 {
@@ -95,4 +101,102 @@ li {
 
 a {
   text-decoration: none;
+}
+
+/*--- Header ---*/
+header {
+  min-height: 80px;
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  /* sticky*/
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* logo */
+.logo-markethub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-markethub__img {
+  height: 50px;
+  width: auto;
+}
+
+/*nav*/
+.nav {
+  display: flex;
+  flex: wrap;
+}
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__item {
+  padding: 5px 20px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.nav__link {
+  color: var(--color-white);
+}
+
+.nav__link:hover {
+  color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 60px;
+  }
+  .logo-markethub__img {
+    height: 30px;
+    width: auto;
+  }
+  .nav__item {
+    padding: 5px 8px;
+  }
+}
+
+/*shopping*/
+.shopping {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.shopping__icon {
+  height: 30px;
+  width: 30px;
+  filter: invert(100%);
+}
+
+.shopping__number-products {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  position: absolute;
+  right: -10px;
+  top: -4px;
+  background-color: #ffc107;
+  border-radius: 10px;
+}
+
+.shopping__products-count {
+  position: absolute;
+  top: -2px;
+  right: 5px;
+  color: var(--color-white);
+  font-size: 14px;
 }
