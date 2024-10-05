@@ -42,7 +42,7 @@
         </section>
         <section class="filter">
             <p class="filter__result-text">Search Result: <span class="filter__result-number">8 products</span></p>
-            <div class="filterBy">
+            <div class="filter__input">
                 <label for="category" class="category__label">Filter by:</label>
                 <input list="categories" name="category" id="category">
                 <datalist id="categories">
@@ -66,6 +66,32 @@
                     <option value="Womens Shoes">
                 </datalist>
             </div>
+            </div>
+        </section>
+
+        <section class="products">
+            <div class="cards">
+                <div class="card">
+                    <figure class="card__figure">
+                        <img class="card__img"
+                            src="https://cdn.dummyjson.com/products/images/groceries/Dog%20Food/thumbnail.png"
+                            alt="product image">
+                    </figure>
+                    <div class="card__content">
+                        <p class="card__title">Dog Food</p>
+                        <p class="card__brand">---</p>
+                        <div class="cards__pills">
+                            <p class="pill pill__text">pet supplies</p>
+                            <p class="pill pill__text">dog food</p>
+                        </div>
+                        <div class="card__price">
+                            <p class="card__price-label">Price</p>
+                            <p class="card__price-value">USD$ 10.99</p>
+                        </div>
+                    </div>
+                    <button class="btn btn--secondary btn--full-width">Add to Cart</button>
+                </div>
+
             </div>
         </section>
     </main>
