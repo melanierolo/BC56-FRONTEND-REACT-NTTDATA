@@ -360,8 +360,9 @@ header {
   background-color: var(--bg-light-gray);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  height: 100vh;
 }
 
 /**--- section search ---*/
