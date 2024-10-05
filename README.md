@@ -1,7 +1,8 @@
-# Frontend 
-En este proyecto, se creó un mini market place utilizando HTML5 y CSS3. 
+# Frontend
 
-# Objetivo 
+En este proyecto, se creó un mini market place utilizando HTML5 y CSS3.
+
+# Objetivo
 
 El objetivo fue diseñar una interfaz atractiva y funcional, tomando como referencia el diseño compartido.
 
@@ -13,6 +14,6 @@ Se desarrolló un prototipo de alta fidelidad utilizando la herramienta Figma. E
 ![Desktop-products](./assets/design/Desktop-products.png)
 ![Desktop-Home](./assets/design/Desktop-products-not-found.png)
 ![Figma-elements](./assets/design/figma-elements.png)
+![Desktop-Home-mobile](./assets/design/Desktop-Home-mobile.PNG)
 
-
-**LINK:** [Ver prototipo de alta fidelidad en Figma](https://www.figma.com/proto/TMCcAkrrzbQA4suediBIO3/marketplace-webapp?node-id=2-14&node-type=frame&t=dXskumLnmc50er9v-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A2) 
+**LINK:** [Ver prototipo de alta fidelidad en Figma](https://www.figma.com/proto/TMCcAkrrzbQA4suediBIO3/marketplace-webapp?node-id=2-14&node-type=frame&t=dXskumLnmc50er9v-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A2)
