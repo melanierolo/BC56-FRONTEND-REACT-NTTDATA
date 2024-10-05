@@ -419,6 +419,7 @@ header {
   padding: 0 24px 24px 24px;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .filter__result-text,
@@ -442,6 +443,12 @@ header {
     align-items: center;
     gap: 16px;
   }
+}
+
+/* hr */
+.products-content__hr {
+  width: calc(100% - 48px);
+  border-bottom: 1px solid var(--bg-light-gray);
 }
 
 /*--- product cards --- */
