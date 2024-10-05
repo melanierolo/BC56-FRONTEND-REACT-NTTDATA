@@ -1,10 +1,10 @@
 # Frontend
 
-En este proyecto, se creó un mini market place utilizando HTML5 y CSS3.
+En este proyecto, se creó un mini market place utilizando HTML5 y CSS3, siguiendo las mejores prácticas de desarrollo web y aplicando la metodología BEM para los estilos.
 
 # Objetivo
 
-El objetivo fue diseñar una interfaz atractiva y funcional, tomando como referencia el diseño compartido.
+El objetivo fue diseñar una interfaz atractiva y funcional, tomando como referencia el diseño compartido que nos compartieron. Además, se desarrolló una web responsive aplicando técnicas de flexbox y media queries para asegurar su adaptabilidad a diferentes dispositivos. Se evitó el uso de librerías externas como Tailwind o Bootstrap, y opcionalmente.
 
 # Prototipo
 
