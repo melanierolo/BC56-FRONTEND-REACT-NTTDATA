@@ -22,7 +22,7 @@ export function createProductCard(product) {
 
   const brand = document.createElement("p");
   brand.className = "card__brand";
-  brand.textContent = product.brand ?? "---";
+  brand.textContent = product.brand ?? "";
 
   const pills = document.createElement("div");
   pills.className = "card__pills";

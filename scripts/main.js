@@ -1,10 +1,10 @@
-console.log("Initial");
-
-import { getProducts } from "./api.js";
+import { getProducts } from "./services.js";
+import { filterProducts } from "./dataController.js";
 import { createProductCard } from "./components.js";
 
 // DOM elements
 const productListElement = document.getElementById("cards");
+const searchInput = document.querySelector(".search__input");
 
 // Initialize
 async function init() {
@@ -13,6 +13,11 @@ async function init() {
 
     // display all products initially
     displayProducts(products);
+
+    searchInput.addEventListener("input", () => {
+      const filteredProducts = filterProducts(products, searchInput.value);
+      displayProducts(filteredProducts);
+    });
   } catch (error) {
     console.error("Error initializing:", error);
   }
@@ -22,7 +27,6 @@ function displayProducts(products) {
   while (productListElement.firstChild) {
     productListElement.removeChild(productListElement.firstChild);
   }
-  console.log("products:", products);
 
   products.forEach((product) => {
     const card = createProductCard(product);
