@@ -1,21 +1,38 @@
-import { getProducts } from "./services.js";
-import { filterProducts } from "./dataController.js";
+import { getProducts, getCategories } from "./services.js";
+import { filterProducts, populateCategories } from "./dataController.js";
 import { createProductCard } from "./components.js";
 
 // DOM elements
 const productListElement = document.getElementById("cards");
 const searchInput = document.querySelector(".search__input");
+const categoryInput = document.querySelector("#category");
 
 // Initialize
 async function init() {
   try {
     const products = await getProducts();
+    const categories = await getCategories();
+
+    populateCategories(categories);
 
     // display all products initially
     displayProducts(products);
 
     searchInput.addEventListener("input", () => {
-      const filteredProducts = filterProducts(products, searchInput.value);
+      const filteredProducts = filterProducts(
+        products,
+        searchInput.value,
+        categoryInput.value
+      );
+      displayProducts(filteredProducts);
+    });
+
+    categoryInput.addEventListener("input", () => {
+      const filteredProducts = filterProducts(
+        products,
+        searchInput.value,
+        categoryInput.value
+      );
       displayProducts(filteredProducts);
     });
   } catch (error) {
