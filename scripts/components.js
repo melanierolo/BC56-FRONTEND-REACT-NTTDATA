@@ -73,3 +73,11 @@ export function addProductCart() {
   const productCountElement = document.getElementById("product-count");
   productCountElement.textContent = newCount;
 }
+
+export function displayProductCountMessage(count) {
+  const resultTextElement = document.querySelector(".filter__result-number");
+  resultTextElement.textContent =
+    count === 0
+      ? "No products found"
+      : `${count} product${count === 1 ? "" : "s"}`;
+}

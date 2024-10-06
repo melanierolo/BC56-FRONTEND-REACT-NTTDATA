@@ -1,6 +1,6 @@
 import { getProducts, getCategories } from "./services.js";
 import { filterProducts, populateCategories } from "./dataController.js";
-import { createProductCard } from "./components.js";
+import { createProductCard, displayProductCountMessage } from "./components.js";
 
 // DOM elements
 const productListElement = document.getElementById("cards");
@@ -45,9 +45,13 @@ async function init() {
 }
 
 function displayProducts(products) {
+  const countProducts = products.length ? products.length : 0;
+
   while (productListElement.firstChild) {
     productListElement.removeChild(productListElement.firstChild);
   }
+
+  displayProductCountMessage(countProducts);
 
   products.forEach((product) => {
     const card = createProductCard(product);
