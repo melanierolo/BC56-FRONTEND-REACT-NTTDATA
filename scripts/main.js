@@ -6,12 +6,16 @@ import { createProductCard } from "./components.js";
 const productListElement = document.getElementById("cards");
 const searchInput = document.querySelector(".search__input");
 const categoryInput = document.querySelector("#category");
+const productCountElement = document.getElementById("product-count");
 
 // Initialize
 async function init() {
   try {
     const products = await getProducts();
     const categories = await getCategories();
+
+    const storeCount = localStorage.getItem("product-count");
+    productCountElement.textContent = storeCount ? storeCount : "0";
 
     populateCategories(categories);
 

@@ -53,10 +53,23 @@ export function createProductCard(product) {
   card.appendChild(content);
 
   const button = document.createElement("button");
-  button.className = "btn btn--secondary btn--full-width";
+  button.className = "btn btn--secondary btn--full-width add-to-cart";
   button.textContent = "Add to Cart";
+
+  button.addEventListener("click", () => {
+    addProductCart();
+  });
 
   card.appendChild(button);
 
   return card;
+}
+
+export function addProductCart() {
+  const currentCount = parseInt(localStorage.getItem("product-count")) || 0;
+  const newCount = currentCount + 1;
+  localStorage.setItem("product-count", newCount);
+
+  const productCountElement = document.getElementById("product-count");
+  productCountElement.textContent = newCount;
 }
