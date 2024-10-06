@@ -1,6 +1,10 @@
 import { getProducts, getCategories } from "./services.js";
 import { filterProducts, populateCategories } from "./dataController.js";
-import { createProductCard, displayProductCountMessage } from "./components.js";
+import {
+  createProductCard,
+  displayProductCountMessage,
+  createNotFound,
+} from "./components.js";
 
 // DOM elements
 const productListElement = document.getElementById("cards");
@@ -28,7 +32,14 @@ async function init() {
         searchInput.value,
         categoryInput.value
       );
+
       displayProducts(filteredProducts);
+
+      if (filteredProducts.length === 0) {
+        const notFound = createNotFound();
+        console.log(notFound);
+        productListElement.appendChild(notFound);
+      }
     });
 
     categoryInput.addEventListener("input", () => {
@@ -37,7 +48,13 @@ async function init() {
         searchInput.value,
         categoryInput.value
       );
+
       displayProducts(filteredProducts);
+
+      if (filteredProducts.length === 0) {
+        const notFound = createNotFound();
+        productListElement.appendChild(notFound);
+      }
     });
   } catch (error) {
     console.error("Error initializing:", error);

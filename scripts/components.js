@@ -81,3 +81,33 @@ export function displayProductCountMessage(count) {
       ? "No products found"
       : `${count} product${count === 1 ? "" : "s"}`;
 }
+
+export function createNotFound() {
+  console.log("hello not found");
+  const notFound = document.createElement("article");
+  notFound.className = "not-found";
+
+  const title = document.createElement("h3");
+  title.className = "not-found__title";
+  title.textContent = "Search Results";
+
+  const paragraph = document.createElement("p");
+  paragraph.className = "not-found__paragraph";
+  paragraph.textContent =
+    "No results found. Please adjust your filters or keywords";
+
+  const figure = document.createElement("figure");
+
+  const img = document.createElement("img");
+  img.className = "not-found__img";
+  img.src = "../assets/images/not-found.png";
+  img.alt = "not found - image";
+
+  figure.appendChild(img);
+
+  notFound.appendChild(title);
+  notFound.appendChild(paragraph);
+  notFound.appendChild(figure);
+
+  return notFound;
+}
