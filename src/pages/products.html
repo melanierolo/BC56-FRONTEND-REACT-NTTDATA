@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>MarketHub | Products</title>
+</head>
+
+<body>
+    <header>
+        <a class="logo-markethub" href="../index.html">
+            <img class="logo-markethub__img" src="../assets/vectors/logo-markethub.svg" alt="MarketHub - logotype">
+        </a>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="../pages/products.html">Products</a></li>
+                <li>
+                    <div class="shopping">
+                        <a class="shopping__link" href="#">
+                            <img class="shopping__icon" src="../assets/icons/shopping-cart-icon.svg"
+                                alt="icon shopping cart">
+                        </a>
+                        <div class="shopping__number-products">
+                            <p class="shopping__products-count">
+                                <strong id="product-count">0</strong>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="products-content">
+        <section class="search">
+            <h2 class="search__title">All You Need, Right Here</h2>
+            <p class="search__paragraph">Find a wide range of products tailored just for you! Explore and filter to
+                discover your favorites</p>
+            <input class="search__input" type="search" placeholder="Search ..." id="searchByTitle">
+        </section>
+        <section class="filter">
+            <p class="filter__result-text">Search Result: <span class="filter__result-number">0 products</span></p>
+            <div class="filter__input">
+                <label for="category" class="category__label">Filter by:</label>
+                <input list="categories" name="category" id="category" class="category__input">
+                <datalist id="categories">
+                    <!--- Categories --->
+                </datalist>
+            </div>
+        </section>
+
+        <hr class="products-content__hr">
+
+        <section class="products">
+            <div class="cards" id="cards">
+                <!--- Product cards --->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="footer__logo">
+                <img class="logo" src="../assets/vectors/logo-markethub.svg" alt="MarketHub - logotype">
+            </div>
+            <div class="footer__container">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a class="nav__link" href="../pages/products.html">Products</a></li>
+                        <li class="nav__item"><a class="nav__link" href="">Terms of Use
+                            </a></li>
+                        <li class="nav__item"><a class="nav__link" href="">Privacy</a></li>
+                        <li class="nav__item"><a class="nav__link" href="">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__social-link">
+                <ul class="footer__list">
+                    <li>
+                        <a href="https://en-gb.facebook.com/" target="_blank">
+                            <img class="footer__icon" src="../assets/icons/facebook-icon.svg" alt="Facebook icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com" target="_blank">
+                            <img class="footer__icon" src="../assets/icons/instagram-icon.svg" alt="Instagram icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://web.whatsapp.com" target="_blank">
+                            <img class="footer__icon" src="../assets/icons/whatsapp-icon.svg" alt="whatsapp icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com" target="_blank">
+                            <img class="footer__icon" src="../assets/icons/tiktok-icon.svg" alt="tiktok icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer__hr">
+        <div class="footer__copyright">
+            <p>&copy; 2024 MarketHub. All right reserved.</p>
+        </div>
+    </footer>
+    <script src="../main.ts" type="module"></script>
+</body>
+
+</html>

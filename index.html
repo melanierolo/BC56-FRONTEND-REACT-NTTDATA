@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketHub | Home</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+</head>
+
+<body>
+    <header>
+        <a class="logo-markethub" href="./index.html">
+            <img class="logo-markethub__img" src="./src/assets/vectors/logo-markethub.svg" alt="MarketHub - logotype">
+        </a>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="./pages/products.html">Products</a></li>
+                <li>
+                    <div class="shopping">
+                        <a class="shopping__link" href="#">
+                            <img class="shopping__icon" src="./src/assets/icons/shopping-cart-icon.svg"
+                                alt="icon shopping cart">
+                        </a>
+                        <div class="shopping__number-products">
+                            <p class="shopping__products-count">
+                                <strong id="product-count">0</strong>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Main-->
+    <main>
+        <section class="hero">
+            <article class="hero-content">
+                <h2 class="hero-content__title">
+                    All Your Favorite Brands in <span class="hero-content__title--highlight">MarketHub</span>
+                </h2>
+                <p class="hero-content__paragraph">At MarketHub, we bring together the best products and your favorite
+                    brands, making shopping easier than ever. From fashion to tech, find everything you need in one
+                    place.</p>
+                <a href="/src/pages/products.html" class="btn btn--large btn--primary">Discover More</a>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="footer__logo">
+                <img class="logo" src="./src/assets/vectors/logo-markethub.svg" alt="MarketHub - logotype">
+            </div>
+            <div class="footer__container">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a class="nav__link" href="src/pages/products.html">Products</a></li>
+                        <li class="nav__item"><a class="nav__link" href="">Terms of Use
+                            </a></li>
+                        <li class="nav__item"><a class="nav__link" href="">Privacy</a></li>
+                        <li class="nav__item"><a class="nav__link" href="">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__social-link">
+                <ul class="footer__list">
+                    <li>
+                        <a href="https://en-gb.facebook.com/" target="_blank">
+                            <img class="footer__icon" src="./src/assets/icons/facebook-icon.svg" alt="Facebook icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com" target="_blank">
+                            <img class="footer__icon" src="./src/assets/icons/instagram-icon.svg" alt="Instagram icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://web.whatsapp.com" target="_blank">
+                            <img class="footer__icon" src="./src/assets/icons/whatsapp-icon.svg" alt="whatsapp icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com" target="_blank">
+                            <img class="footer__icon" src="./src/assets/icons/tiktok-icon.svg" alt="tiktok icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer__hr">
+        <div class="footer__copyright">
+            <p>&copy; 2024 MarketHub. All right reserved.</p>
+        </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
