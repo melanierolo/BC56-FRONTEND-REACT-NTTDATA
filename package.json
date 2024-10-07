@@ -1,15 +1,33 @@
 {
   "name": "bc56-frontend-react-nttdata",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "decription": "Mini marketplace",
+  "keywords": [
+    "typescript",
+    "html",
+    "css",
+    "vite"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
+  "author": "Melanie Rodas",
+  "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.5.3",
+    "@eslint/js": "^9.12.0",
+    "@types/eslint__js": "^8.42.3",
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.10.0",
+    "typescript": "^5.5.2",
     "vite": "^5.4.8"
   }
 }
