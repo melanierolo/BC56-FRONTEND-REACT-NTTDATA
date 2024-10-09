@@ -74,6 +74,7 @@ export function displayProducts(products: Product[]): void {
   const productListElement = document.getElementById(
     'cards',
   ) as HTMLElement | null;
+  const countProducts = products.length ? products.length : 0;
 
   if (!productListElement) {
     throw new Error('product elements not found');
@@ -83,10 +84,22 @@ export function displayProducts(products: Product[]): void {
     productListElement.removeChild(productListElement.firstChild);
   }
 
+  displayProductCountMessage(countProducts);
+
   products.forEach((product) => {
     const card = createProductCard(product);
     productListElement.appendChild(card);
   });
+}
+
+export function displayProductCountMessage(count: number): void {
+  const resultTextElement = document.querySelector('.filter__result-number');
+  if (resultTextElement) {
+    resultTextElement.textContent =
+      count === 0
+        ? 'No products found'
+        : `${count} product${count === 1 ? '' : 's'}`;
+  }
 }
 
 export function updateCartCount(): void {
@@ -101,7 +114,7 @@ export function updateCartCount(): void {
   productCountElement.textContent = newCount;
 }
 
-export function populateCategories(categories: CategoryFilter[]) {
+export function populateCategories(categories: CategoryFilter[]): void {
   const categoryList = document.getElementById('categories');
 
   if (!categoryList) {
@@ -118,7 +131,10 @@ export function populateCategories(categories: CategoryFilter[]) {
   });
 }
 
-export function searchAndFilterListeners(products: Product[]) {
+export function searchAndFilterListeners(products: Product[]): void {
+  const productListElement = document.getElementById(
+    'cards',
+  ) as HTMLElement | null;
   const searchInput = document.querySelector(
     '.search__input',
   ) as HTMLInputElement;
@@ -132,15 +148,63 @@ export function searchAndFilterListeners(products: Product[]) {
       searchInput.value,
       categoryInput.value,
     );
+
     displayProducts(filteredProducts);
 
-    categoryInput.addEventListener('input', () => {
-      const filteredProducts = filterProducts(
-        products,
-        searchInput.value,
-        categoryInput.value,
-      );
-      displayProducts(filteredProducts);
-    });
+    if (filteredProducts.length === 0) {
+      if (!productListElement) {
+        throw new Error('product list element not found');
+      }
+
+      const notFound = createNotFound();
+      productListElement.appendChild(notFound);
+    }
   });
+
+  categoryInput.addEventListener('input', () => {
+    const filteredProducts = filterProducts(
+      products,
+      searchInput.value,
+      categoryInput.value,
+    );
+
+    displayProducts(filteredProducts);
+
+    if (!productListElement) {
+      throw new Error('product list element not found');
+    }
+    if (filteredProducts.length === 0) {
+      const notFound = createNotFound();
+      productListElement.appendChild(notFound);
+    }
+  });
+}
+
+export function createNotFound(): HTMLElement {
+  const notFound: HTMLElement = document.createElement('article');
+  notFound.className = 'not-found';
+
+  const title: HTMLElement = document.createElement('h3');
+  title.className = 'not-found__title';
+  title.textContent = 'Search Results';
+
+  const paragraph: HTMLElement = document.createElement('p');
+  paragraph.className = 'not-found__paragraph';
+  paragraph.textContent =
+    'No results found. Please adjust your filters or keywords';
+
+  const figure: HTMLElement = document.createElement('figure');
+
+  const img: HTMLImageElement = document.createElement('img');
+  img.className = 'not-found__img';
+  img.src = '../assets/images/not-found.png';
+  img.alt = 'not found - image';
+
+  figure.appendChild(img);
+
+  notFound.appendChild(title);
+  notFound.appendChild(paragraph);
+  notFound.appendChild(figure);
+
+  return notFound;
 }
