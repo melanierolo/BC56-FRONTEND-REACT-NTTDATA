@@ -1,4 +1,4 @@
-import { Product } from './interfaces';
+import { Product, CategoryFilter } from './interfaces';
 import { getProductsMapper } from './mappers';
 
 const API_PUBLIC = 'https://dummyjson.com';
@@ -11,6 +11,19 @@ export async function getProducts(): Promise<Product[]> {
     }
     const products = await response.json();
     return getProductsMapper(products);
+  } catch {
+    throw new Error('Product not found');
+  }
+}
+
+export async function getCategories(): Promise<CategoryFilter[]> {
+  try {
+    const response = await fetch(`${API_PUBLIC}/products/categories`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
+    const categories = await response.json();
+    return categories;
   } catch {
     throw new Error('Product not found');
   }

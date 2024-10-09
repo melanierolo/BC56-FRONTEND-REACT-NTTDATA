@@ -2,6 +2,7 @@ import { Product } from './interfaces';
 export function filterProducts(
   products: Product[],
   searchTerm: string,
+  selectedCategory: string,
 ): Product[] {
   return products.filter((product) => {
     const productTitle = product.title ?? '';
@@ -9,7 +10,9 @@ export function filterProducts(
     const isTitleOrBrandMatching =
       productTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
       productBrand.toLowerCase().includes(searchTerm.toLowerCase());
-
-    return isTitleOrBrandMatching;
+    const isCategoryMaching = selectedCategory
+      ? product.category === selectedCategory.toLowerCase()
+      : true;
+    return isTitleOrBrandMatching && isCategoryMaching;
   });
 }

@@ -1,4 +1,5 @@
-import { Product } from './interfaces';
+import { filterProducts } from './dataController';
+import { Product, CategoryFilter } from './interfaces';
 import { addProductToCart } from './services';
 
 export function createProductCard(product: Product): HTMLElement {
@@ -98,4 +99,48 @@ export function updateCartCount(): void {
   }
 
   productCountElement.textContent = newCount;
+}
+
+export function populateCategories(categories: CategoryFilter[]) {
+  const categoryList = document.getElementById('categories');
+
+  if (!categoryList) {
+    throw new Error('category list element not found');
+  }
+
+  while (categoryList.firstChild) {
+    categoryList.removeChild(categoryList.firstChild);
+  }
+  categories.forEach((category) => {
+    const option = document.createElement('option');
+    option.value = category.name;
+    categoryList.appendChild(option);
+  });
+}
+
+export function searchAndFilterListeners(products: Product[]) {
+  const searchInput = document.querySelector(
+    '.search__input',
+  ) as HTMLInputElement;
+  const categoryInput = document.querySelector(
+    '#category',
+  ) as HTMLSelectElement;
+
+  searchInput.addEventListener('input', () => {
+    const filteredProducts = filterProducts(
+      products,
+      searchInput.value,
+      categoryInput.value,
+    );
+    displayProducts(filteredProducts);
+
+    categoryInput.addEventListener('input', () => {
+      const filteredProducts = filterProducts(
+        products,
+        searchInput.value,
+        categoryInput.value,
+      );
+      displayProducts(filteredProducts);
+    });
+  });
 }
