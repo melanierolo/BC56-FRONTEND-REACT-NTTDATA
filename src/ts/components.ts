@@ -1,4 +1,5 @@
 import { Product } from './interfaces';
+import { addProductToCart } from './services';
 
 export function createProductCard(product: Product): HTMLElement {
   const card = document.createElement('div');
@@ -58,6 +59,10 @@ export function createProductCard(product: Product): HTMLElement {
   button.className = 'btn btn--secondary btn--full-width add-to-cart';
   button.textContent = 'Add to Cart';
 
+  button.addEventListener('click', () => {
+    updateCartCount();
+  });
+
   card.appendChild(button);
 
   return card;
@@ -70,8 +75,7 @@ export function displayProducts(products: Product[]): void {
   ) as HTMLElement | null;
 
   if (!productListElement) {
-    console.error('product elements not found');
-    return;
+    throw new Error('product elements not found');
   }
 
   while (productListElement.firstChild) {
@@ -82,4 +86,16 @@ export function displayProducts(products: Product[]): void {
     const card = createProductCard(product);
     productListElement.appendChild(card);
   });
+}
+
+export function updateCartCount(): void {
+  const newCount = addProductToCart().toString();
+  localStorage.setItem('product-count', newCount);
+
+  const productCountElement = document.getElementById('product-count');
+  if (!productCountElement) {
+    throw new Error('product count element not found');
+  }
+
+  productCountElement.textContent = newCount;
 }
