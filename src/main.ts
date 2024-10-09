@@ -1,9 +1,6 @@
-function hello(): any {
-  const grettings = 'Welcome to everyone';
-  return grettings;
-}
+import { init } from './ts/index.ts';
 
-const meesageFisrtPart = 'Message :';
-const messageSecondPart = hello();
-
-console.log(`${meesageFisrtPart} ${messageSecondPart}`);
+document.addEventListener('DOMContentLoaded', () => {
+  // start application
+  init();
+});
