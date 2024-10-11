@@ -1,0 +1,10 @@
+.logo-markethub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-markethub__img {
+  height: 50px;
+  width: auto;
+}
