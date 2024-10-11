@@ -8,3 +8,10 @@
   height: 50px;
   width: auto;
 }
+
+@media (max-width: 768px) {
+  .logo-markethub__img {
+    height: 30px;
+    width: auto;
+  }
+}

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import marketHubLogo from "@assets/vectors/logo-markethub.svg";
 import Button from "./components/atoms/Button";
 import Typography from "./components/atoms/Typography";
 import "./App.css";
+import Logo from "./components/atoms/Logo";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,9 +10,8 @@ function App() {
   return (
     <div className="app-page">
       <a>
-        <img src={marketHubLogo} className="logo react" alt="logo" />
+        <Logo></Logo>
       </a>
-
       <div>
         <Button size="medium" onClick={() => setCount((count) => count + 1)}>
           count is {count}

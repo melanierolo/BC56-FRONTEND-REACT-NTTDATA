@@ -1,5 +1,5 @@
-import marketHubLogo from "../../../assets/vectors/logo-markethub.svg";
-import "style.css";
+import marketHubLogo from "@assets/vectors/logo-markethub.svg";
+import "./style.css";
 
 const Logo = () => {
   return (
