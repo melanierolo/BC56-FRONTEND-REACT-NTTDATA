@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "@components/atoms/Logo";
 import CartWidget from "@root/components/molecules/CartWidget";
 import "./style.css";
 import Container from "../Container";
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <header>
       <Container>

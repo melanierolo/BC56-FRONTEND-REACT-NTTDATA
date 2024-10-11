@@ -1,8 +1,9 @@
+import { FC } from "react";
 import shoppingCartIcon from "@assets/icons/shopping-cart-icon.svg";
 
 import "./style.css";
 
-const CartWidget = () => {
+const CartWidget: FC = () => {
   return (
     <div className="shopping">
       <div className="shopping__link">
