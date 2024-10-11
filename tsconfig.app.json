@@ -18,7 +18,16 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Base directory amd path aliases for cleaner imports*/
+    "baseUrl": "./",
+    "paths": {
+      "@root/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["./node_modules", "./dist"]
 }

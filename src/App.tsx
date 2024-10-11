@@ -1,5 +1,5 @@
 import { useState } from "react";
-import marketHubLogo from "./assets/vectors/logo-markethub.svg";
+import marketHubLogo from "@assets/vectors/logo-markethub.svg";
 import Button from "./components/atoms/Button";
 import Typography from "./components/atoms/Typography";
 import "./App.css";
