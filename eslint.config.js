@@ -1,10 +1,10 @@
-import js from "eslint/js";
+import js from "@eslint/js";
 import globals from "globals";
 import tsEslintPlugin from "@typescript-eslint/eslint-plugin";
-import reactHooks from "@eslint-plugin-react-hooks";
-import reactRefresh from "@eslint-plugin-react-refresh";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
-import eslintConfigPrettier from "@eslint-config-prettier";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -13,7 +13,6 @@ export default tseslint.config(
       js.configs.recommended,
       ...tseslint.configs.recommended,
       eslintConfigPrettier,
-      ,
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
