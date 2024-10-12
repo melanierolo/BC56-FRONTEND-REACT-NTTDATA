@@ -5,6 +5,8 @@ import { Product } from "@domain/interfaces/product.interface";
 import Button from "@components/atoms/Button";
 import Chip from "@components/atoms/Chip";
 
+import { addProductToCart } from "@root/services/local-storage.service";
+
 import "./style.css";
 
 interface ProductCardProps {
@@ -12,6 +14,13 @@ interface ProductCardProps {
 }
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
+  const handleAddToCart = () => {
+    const newCount = addProductToCart();
+
+    const event = new CustomEvent("cartCountUpdated", { detail: newCount });
+    window.dispatchEvent(event);
+  };
+
   return (
     <div className="card">
       <figure className="card__figure">
@@ -34,7 +43,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <p className="card__price-value">{`USD $ ${product.price} `}</p>
         </div>
       </div>
-      <Button color="secondary" size="medium" fullWidth={true}>
+      <Button color="secondary" size="medium" fullWidth={true} onClick={handleAddToCart}>
         Add to Cart
       </Button>
     </div>

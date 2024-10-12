@@ -23,9 +23,11 @@
 }
 
 .shopping__products-count {
+  width: 20px;
   position: absolute;
-  top: 0px;
-  right: 5px;
+  top: -2px;
+  right: 0px;
   color: var(--text-body-primary);
   font-size: 14px;
+  text-align: center;
 }
