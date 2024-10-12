@@ -6,10 +6,13 @@ import path from "path";
 export default defineConfig({
   resolve: {
     alias: {
+      "@root": path.resolve(__dirname, "src"),
+      "@mappers": path.resolve(__dirname, "src/mappers"),
       "@assets": path.resolve(__dirname, "src/assets"),
       "@components": path.resolve(__dirname, "src/components"),
+      "@domain": path.resolve(__dirname, "src/domain"),
       "@pages": path.resolve(__dirname, "src/pages"),
-      "@root": path.resolve(__dirname, "src"),
+      "@services": path.resolve(__dirname, "src/services"),
     },
   },
   plugins: [react()],

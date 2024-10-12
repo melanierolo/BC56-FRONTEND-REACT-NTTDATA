@@ -1,0 +1,66 @@
+.card {
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-elevated);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 16px 20px;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card__figure {
+  margin: auto;
+}
+
+.card__img {
+  height: 150px;
+}
+
+.card__title {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.card__brand {
+  color: var(--text-body-secondary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.card__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 4px;
+}
+
+.card__price {
+  display: flex;
+  padding: 8px 0px;
+  align-items: center;
+  gap: 4px;
+}
+
+.card__price-label {
+  flex: 1;
+}
+.card__price-value {
+  flex: 2;
+  text-align: end;
+}
+.card__price-label,
+.card__price-value {
+  color: var(--color-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+}

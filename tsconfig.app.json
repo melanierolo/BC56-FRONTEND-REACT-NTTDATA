@@ -24,9 +24,13 @@
     "baseUrl": "./",
     "paths": {
       "@root/*": ["src/*"],
+      "@mappers/*": ["src/mappers/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      "@pages/*": ["src/pages/*"]
+      "@domain/*": ["src/domain/*"],
+      "@pages/*": ["src/pages/*"],
+      "@services/*": ["src/services/*"],
+      "@utilities/*": ["src/utilities/*"]
     }
   },
   "include": ["src"],
