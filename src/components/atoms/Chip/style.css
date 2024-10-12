@@ -1,0 +1,14 @@
+.chip {
+  border-radius: 4px;
+  background: var(--bg-light-gray-2);
+  display: inline-block;
+  padding: 4px;
+}
+
+.chip__label {
+  color: var(--text-body-secondary);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
