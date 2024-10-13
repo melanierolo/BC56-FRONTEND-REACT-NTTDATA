@@ -1,0 +1,29 @@
+.filter {
+  width: 100%;
+  padding: 0 24px 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.filter__result-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.filter__result-number {
+  font-size: 1.25rem;
+}
+
+.filter__input {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .filter {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 16px;
+  }
+}
