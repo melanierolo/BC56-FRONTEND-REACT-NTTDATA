@@ -5,6 +5,7 @@ import SearchSection from "@components/organisms/SearchSection";
 import Container from "@components/organisms/Container";
 import ProductList from "@components/organisms/ProductList";
 import FilterByCategorySection from "@components/organisms/FilterByCategorySection";
+import NotFoundCard from "@components/molecules/NotFoundCard";
 
 import { getProducts } from "@services/product.service";
 import { getCategories } from "@services/category.service";
@@ -20,6 +21,7 @@ const Products: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [hasSearch, setHasSearch] = useState<boolean>(false);
 
   const getDataProducts = async (): Promise<void> => {
     try {
@@ -42,7 +44,6 @@ const Products: FC = () => {
 
   const handleCategoryChange = (categoryValue: string) => {
     setSelectedCategory(categoryValue);
-    console.log("category selected:", categoryValue);
   };
 
   useEffect(() => {
@@ -53,6 +54,7 @@ const Products: FC = () => {
   useEffect(() => {
     const filtered = filterProducts(products, searchTerm, selectedCategory);
     setFilteredProducts(filtered);
+    setHasSearch(true);
   }, [products, searchTerm, selectedCategory]);
 
   return (
@@ -65,7 +67,11 @@ const Products: FC = () => {
           selectedCategory={selectedCategory}
           totalProducts={filteredProducts.length}
         ></FilterByCategorySection>
-        <ProductList products={filteredProducts}></ProductList>
+        {hasSearch && filteredProducts.length === 0 ? (
+          <NotFoundCard />
+        ) : (
+          <ProductList products={filteredProducts}></ProductList>
+        )}
       </Container>
     </main>
   );
