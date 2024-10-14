@@ -18,7 +18,7 @@ Este proyecto es un mini marketplace implementado con **TypeScript**, **Vite** y
 
 Este proyecto ha sido migrado de JavaScript a **React** y **TypeScript**, siguiendo los siguientes lineamientos:
 
-- **Uso de hooks**: Se han utilizado `useEffect` y `useState` correctamente para manejar el estado y los efectos secundarios en los componentes. 
+- **Uso de hooks**: Se han utilizado `useEffect` y `useState` correctamente para manejar el estado y los efectos secundarios en los componentes.
 - **Arquitectura de carpetas escalable**: La estructura del proyecto está organizada en carpetas que separan los assets, servicios,dominio,mappers, los componentes, las páginas y los utilitarios, asegurando la escalabilidad y mantenibilidad del código.
 - **Tipos fuertes**: Se han definido interfaces y tipos para garantizar que los datos se manejen correctamente en toda la aplicación, evitando el uso de `any`.
 - **Estructura de Archivos**: La lógica de negocio se ha separado de las definiciones de estructuras de datos, organizando el código en carpetas como `assets`,`components`,`domain`,`utilities`, `services`, y `mappers`.
@@ -79,13 +79,20 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
 
 ## Prototipo
 
-Se desarrolló un prototipo de alta fidelidad utilizando la herramienta Figma. En este proceso, se implementaron conceptos de Atomic Design para estructurar los elementos de la página de manera eficiente y coherente.
+Se desarrolló un prototipo de alta fidelidad utilizando la herramienta Figma en donde se ha agregado la página . En este proceso, se implementaron conceptos de Atomic Design para estructurar los elementos de la página de manera eficiente y coherente.
 
 ![Desktop-Home](./src/assets/design/Desktop-Home.png)
 ![Desktop-products](./src/assets/design/Desktop-products.png)
 ![Desktop-Home](./src/assets/design/Desktop-products-not-found.png)
 ![Figma-elements](./src/assets/design/figma-elements.png)
 ![Desktop-Home-mobile](./src/assets/design/Desktop-Home-mobile.PNG)
+
+### Página Resumen
+
+Se ha agregado una nueva página, la cual permite visualizar la lista de productos agregados al carrito, dándole la opción al usuario de poder eliminar, agregar o reducir productos. Por otro lado, la página tiene un formulario sobre la información de envío, para el proceso de compra.También, se tiene la página en el caso de que no se ha agregado ningún producto.
+
+![Desktop-summary-page](./src/assets/design/Desktop-summary-page.png)
+![Desktop-empty-summary](./src/assets/design/Desktop-empty-summary.png)
 
 **LINK:** [Ver prototipo de alta fidelidad en Figma](https://www.figma.com/proto/TMCcAkrrzbQA4suediBIO3/marketplace-webapp?node-id=2-14&node-type=frame&t=dXskumLnmc50er9v-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A2)
 
