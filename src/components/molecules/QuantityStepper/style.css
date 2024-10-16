@@ -1,0 +1,21 @@
+.quantity-stepper {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.quantity-stepper__btn {
+  width: 30px;
+  height: 30px;
+}
+
+.quantity-stepper__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}

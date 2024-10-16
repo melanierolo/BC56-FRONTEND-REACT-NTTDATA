@@ -15,7 +15,7 @@ import { Category } from "@domain/interfaces/category.interface";
 
 import { filterProducts } from "@root/utilities/filter-producs.utility";
 
-const Products: FC = () => {
+const ProductsPage: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -77,4 +77,4 @@ const Products: FC = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;

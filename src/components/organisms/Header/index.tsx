@@ -23,7 +23,9 @@ const Header: FC = () => {
                 </NavLink>
               </li>
               <li>
-                <CartWidget />
+                <NavLink to="/cart">
+                  <CartWidget />
+                </NavLink>
               </li>
             </ul>
           </nav>

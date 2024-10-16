@@ -4,8 +4,9 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Header from "@components/organisms/Header";
 import Footer from "@components/organisms/Footer";
 
-import Home from "@pages/Home";
-import Products from "@pages/Products";
+import HomePage from "@pages/Home";
+import ProductsPage from "@pages/Products";
+import CartPage from "@pages/Cart";
 import { CartProvider } from "./contexts/CartContext";
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
       <BrowserRouter>
         <Header></Header>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/products" element={<Products />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/products" element={<ProductsPage />}></Route>
+          <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/*" element={<Navigate to="/" />}></Route>
         </Routes>
         <Footer></Footer>

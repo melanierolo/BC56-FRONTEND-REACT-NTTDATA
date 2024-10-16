@@ -2,7 +2,7 @@ export interface Product {
   id: number;
   title: string;
   description: string;
-  category: Category;
+  category: string;
   price: number;
   rating: number;
   stock: number;
@@ -23,7 +23,7 @@ export interface ProductResponse {
   id: number;
   title: string;
   description: string;
-  category: Category;
+  category: string;
   price: number;
   discountPercentage: number;
   rating: number;
@@ -47,13 +47,6 @@ export interface ProductResponse {
 export enum AvailabilityStatus {
   InStock = "In Stock",
   LowStock = "Low Stock",
-}
-
-export enum Category {
-  Beauty = "beauty",
-  Fragrances = "fragrances",
-  Furniture = "furniture",
-  Groceries = "groceries",
 }
 
 export interface Dimensions {

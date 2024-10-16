@@ -1,0 +1,10 @@
+.shopping-cart {
+  padding: 16px;
+}
+
+.shopping-cart__title {
+  text-align: left;
+}
+.shopping-cart__paragraph {
+  color: var(--text-body-secondary);
+}

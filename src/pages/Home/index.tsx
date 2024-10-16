@@ -1,7 +1,7 @@
 import { FC } from "react";
 import HeroBanner from "@root/components/molecules/HeroBanner";
 
-const Home: FC = () => {
+const HomePage: FC = () => {
   const heroBannerData = {
     mainTitle: "All Your Favorite Brands in",
     highlightedTitle: "MarketHub",
@@ -23,4 +23,4 @@ const Home: FC = () => {
   );
 };
 
-export default Home;
+export default HomePage;

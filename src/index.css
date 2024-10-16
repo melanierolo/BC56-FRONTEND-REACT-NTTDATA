@@ -10,8 +10,11 @@
   --text-body-secondary: #7a8a99;
   --text-body-tertiary: #f8f8f8;
   --hr-stroke-color: rgba(209, 213, 219, 0.5);
+  --stroke-color: rgba(209, 213, 219, 0.5);
+  --border-gray: #a9a9a9;
   --bg-light-gray: #e9ecef;
   --bg-light-gray-2: #e0e0e0;
+  --bg-light-gray-3: #d3d3d3;
   --bg-white: #f8f8f8;
   --shadow-soft: 0 0 5px rgba(0, 0, 0, 0.2);
   --shadow-elevated: 0px 10px 15px 0px rgba(0, 0, 0, 0.25);
@@ -66,7 +69,6 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: var(--text-body-primary);
-  min-height: 100vh;
   background-color: var(--bg-light-gray);
 }
 
