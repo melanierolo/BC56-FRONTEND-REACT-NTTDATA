@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 import { Product } from "@domain/interfaces/product.interface";
 
 import Button from "@components/atoms/Button";
 import Chip from "@components/atoms/Chip";
 
-import { addProductToCart } from "@root/services/local-storage.service";
+import { CartContext } from "@root/contexts/CartContext";
 
 import "./style.css";
 
@@ -14,11 +14,9 @@ interface ProductCardProps {
 }
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
+  const { addProduct } = useContext(CartContext);
   const handleAddToCart = () => {
-    const newCount = addProductToCart();
-
-    const event = new CustomEvent("cartCountUpdated", { detail: newCount });
-    window.dispatchEvent(event);
+    addProduct(product, 1);
   };
 
   return (
@@ -34,8 +32,8 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <p className="card__title">{product.title}</p>
         <p className="card__brand">{product.brand}</p>
         <div className="card__chips">
-          {product.tags.map((tag: string) => {
-            return <Chip label={tag}></Chip>;
+          {product.tags.map((tag: string, key: number) => {
+            return <Chip key={`tag-${key}`} label={tag}></Chip>;
           })}
         </div>
         <div className="card__price">

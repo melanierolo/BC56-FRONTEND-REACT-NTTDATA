@@ -1,31 +1,12 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import shoppingCartIcon from "@assets/icons/shopping-cart-icon.svg";
+import { useContext } from "react";
+import { CartContext } from "@root/contexts/CartContext";
 
 import "./style.css";
 
 const CartWidget: FC = () => {
-  const [cartCount, setCartCount] = useState<number>(0);
-
-  const updateCartCount = () => {
-    const getCount = localStorage.getItem("product-count")?.toString() || "0";
-    const newCount = parseInt(getCount, 10);
-    setCartCount(newCount);
-  };
-
-  useEffect(() => {
-    updateCartCount();
-
-    const handleCartCountUpdate = (event: Event) => {
-      const customEvent = event as CustomEvent<number>;
-      setCartCount(customEvent.detail);
-    };
-
-    window.addEventListener("cartCountUpdated", handleCartCountUpdate as EventListener);
-
-    return () => {
-      window.removeEventListener("cartCountUpdated", handleCartCountUpdate as EventListener);
-    };
-  }, []);
+  const { totalItems } = useContext(CartContext);
 
   return (
     <div className="shopping">
@@ -34,7 +15,7 @@ const CartWidget: FC = () => {
       </div>
       <div className="shopping__number-products">
         <p className="shopping__products-count">
-          <strong className="product-count">{cartCount}</strong>
+          <strong className="product-count">{totalItems}</strong>
         </p>
       </div>
     </div>
