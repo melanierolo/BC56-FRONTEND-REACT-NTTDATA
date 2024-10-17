@@ -64,8 +64,10 @@ const ShoppingCart: FC = () => {
 
   return (
     <div className="shopping-cart">
-      <h2 className="shopping-cart__title">Shopping cart</h2>
-      <p className="shopping-cart__paragraph">You have {totalItems} item in your cart</p>
+      <div>
+        <h2 className="shopping-cart__title">Shopping cart</h2>
+        <p className="shopping-cart__paragraph">You have {totalItems} item in your cart</p>
+      </div>
       <Table columns={columns} data={cart} renderRow={renderRow}></Table>
     </div>
   );

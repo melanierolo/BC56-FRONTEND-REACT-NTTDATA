@@ -1,13 +1,13 @@
-.shopping-cart {
+.order-summary {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 16px;
 }
 
-.shopping-cart__title {
+.order-summary__title {
   text-align: left;
 }
-.shopping-cart__paragraph {
+.order-summary__paragraph {
   color: var(--text-body-secondary);
 }
