@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 
 import { Product } from "@domain/interfaces/product.interface";
+import { USD_CURRENCY } from "@root/domain/constants/currencies.constants";
 
 import Button from "@components/atoms/Button";
 import Chip from "@components/atoms/Chip";
@@ -38,7 +39,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         </div>
         <div className="card__price">
           <p className="card__price-label">Price</p>
-          <p className="card__price-value">{`USD $ ${product.price} `}</p>
+          <p className="card__price-value">{`${USD_CURRENCY.code} ${USD_CURRENCY.symbol} ${product.price} `}</p>
         </div>
       </div>
       <Button color="secondary" size="medium" fullWidth={true} onClick={handleAddToCart}>

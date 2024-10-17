@@ -4,7 +4,7 @@ import { CartContext } from "@root/contexts/CartContext";
 
 import OrderSummaryCard from "@components/molecules/OrderSummaryCard";
 
-import { Currency } from "@domain/interfaces/currency.interface";
+import { SALES_TAX } from "@domain/constants/taxes.constants";
 
 import "./style.css";
 
@@ -12,10 +12,9 @@ const OrderSummary: FC = () => {
   const { totalItems, cart } = useContext(CartContext);
 
   const subtotal = cart.reduce((sum, item) => sum + item.item.price * item.quantityOfItems, 0);
-  const tax = subtotal * 0.18;
+  const tax = (subtotal * SALES_TAX.rate) / 100;
   const shipping = 5.0;
   const total = subtotal + tax + shipping;
-  const currency: Currency = { name: "United States Dolar", code: "USD", symbol: "$" };
 
   return (
     <div className="order-summary">
@@ -28,7 +27,6 @@ const OrderSummary: FC = () => {
         tax={tax}
         shipping={shipping}
         total={total}
-        currency={currency}
       ></OrderSummaryCard>
     </div>
   );

@@ -1,6 +1,7 @@
 import { FC } from "react";
 
-import { Currency } from "@domain/interfaces/currency.interface";
+import { USD_CURRENCY } from "@domain/constants/currencies.constants";
+import { SALES_TAX } from "@domain/constants/taxes.constants";
 
 import "./style.css";
 
@@ -9,7 +10,6 @@ interface OrderSummaryCardProps {
   tax: number;
   shipping: number;
   total: number;
-  currency: Currency;
 }
 
 interface OrderItem {
@@ -17,16 +17,10 @@ interface OrderItem {
   value: number;
 }
 
-const OrderSummaryCard: FC<OrderSummaryCardProps> = ({
-  subtotal,
-  tax,
-  shipping,
-  total,
-  currency,
-}) => {
+const OrderSummaryCard: FC<OrderSummaryCardProps> = ({ subtotal, tax, shipping, total }) => {
   const orderData: OrderItem[] = [
     { label: "Subtotal", value: subtotal },
-    { label: "Tax (IGV 18%)", value: tax },
+    { label: `Tax (${SALES_TAX.name} ${SALES_TAX.rate}%)`, value: tax },
     { label: "Shipping", value: shipping },
     { label: "Total", value: total },
   ];
@@ -35,21 +29,21 @@ const OrderSummaryCard: FC<OrderSummaryCardProps> = ({
       <div className="summary-card__row">
         <span className="summary-card__label">{orderData[0].label}</span>
         <span className="summary-card__value">
-          {`${currency.symbol} `}
+          {`${USD_CURRENCY.symbol} `}
           {orderData[0].value.toFixed(2)}
         </span>
       </div>
       <div className="summary-card__row">
         <span className="summary-card__label">{orderData[1].label}</span>
         <span className="summary-card__value">
-          {`${currency.symbol} `}
+          {`${USD_CURRENCY.symbol} `}
           {orderData[1].value.toFixed(2)}
         </span>
       </div>
       <div className="summary-card__row">
         <span className="summary-card__label">{orderData[2].label}</span>
         <span className="summary-card__value">
-          {`${currency.symbol} `}
+          {`${USD_CURRENCY.symbol} `}
           {orderData[2].value.toFixed(2)}
         </span>
       </div>
@@ -58,7 +52,7 @@ const OrderSummaryCard: FC<OrderSummaryCardProps> = ({
         <span className="summary-card__label-total">{orderData[3].label}</span>
         <span className="summary-card__value-total">
           {" "}
-          {`${currency.code + " " + currency.symbol}`} {orderData[3].value.toFixed(2)}
+          {`${USD_CURRENCY.code + " " + USD_CURRENCY.symbol}`} {orderData[3].value.toFixed(2)}
         </span>
       </div>
     </div>
