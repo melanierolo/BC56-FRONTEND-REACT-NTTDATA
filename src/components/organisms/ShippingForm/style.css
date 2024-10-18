@@ -1,0 +1,11 @@
+.shipping-form {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  border-radius: 15px;
+  background: var(--bg-white);
+  box-shadow: var(--shadow-elevated);
+}

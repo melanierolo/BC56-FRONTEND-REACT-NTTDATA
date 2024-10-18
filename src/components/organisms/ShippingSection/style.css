@@ -1,0 +1,13 @@
+.shipping-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+}
+
+.shipping-section__title {
+  text-align: left;
+}
+.shipping-section__paragraph {
+  color: var(--text-body-secondary);
+}

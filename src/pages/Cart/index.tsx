@@ -1,8 +1,9 @@
 import { FC } from "react";
 
 import Container from "@components/organisms/Container";
-import ShoppingCart from "@root/components/organisms/ShoppingCart";
-import OrderSummary from "@root/components/organisms/OrderSummary";
+import ShoppingCart from "@components/organisms/ShoppingCart";
+import OrderSummary from "@components/organisms/OrderSummary";
+import ShippingSection from "@components/organisms/ShippingSection";
 
 const CartPage: FC = () => {
   return (
@@ -14,7 +15,9 @@ const CartPage: FC = () => {
               <ShoppingCart />
               <OrderSummary />
             </div>
-            <div></div>
+            <div>
+              <ShippingSection></ShippingSection>
+            </div>
           </div>
         </Container>
       </section>

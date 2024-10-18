@@ -2,21 +2,71 @@
   width: 100%;
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.text-input__container {
+  display: flex;
+  width: 100%;
+}
+.text-input__label {
+  font-size: 0.875;
+  font-weight: 600;
+  text-align: left;
+  padding: 0 0px 4px;
 }
 
 .text-input__start-icon {
   position: absolute;
+  top: 5px;
   display: flex;
   align-items: center;
   width: 20px;
   margin: 5px 16px;
 }
+
 .text-input__input {
   width: 100%;
-  border-radius: 25px;
-  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  border: 2px solid var(--border-medium-gray);
   height: 40px;
   padding: 5px 16px;
+}
+
+.text-input__input--icon {
   text-indent: 36px;
+}
+
+.text-input__input--small {
+  height: 2.5rem;
+}
+
+.text-input__input--medium {
+  height: 3.125rem;
+}
+
+.text-input__input--success {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.text-input__input--error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.text-input__input--default {
+  border-color: #bebebe;
+}
+
+.text-input__error-text {
+  font-size: 0.875rem;
+  color: #dc3545;
+  margin-top: 0.25rem;
+}
+
+.text-input__helper-text {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
 }

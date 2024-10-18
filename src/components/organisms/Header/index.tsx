@@ -36,19 +36,3 @@ const Header: FC = () => {
 };
 
 export default Header;
-/*
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route, Link } from "react-router-dom";
-
-export const Navigation = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />}>
-          <Route path="products" element={<DashboardMessages />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
-*/

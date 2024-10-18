@@ -9,12 +9,12 @@ interface SelectOption {
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
-  options?: SelectOption[];
+  options: SelectOption[];
 }
 
 const Select: FC<SelectProps> = ({ id, label, options, ...selectProps }) => {
   return (
-    <>
+    <div className="select">
       {label && (
         <label htmlFor={id} className="select-label">
           {label}
@@ -30,7 +30,7 @@ const Select: FC<SelectProps> = ({ id, label, options, ...selectProps }) => {
           ))}
         </select>
       </div>
-    </>
+    </div>
   );
 };
 
