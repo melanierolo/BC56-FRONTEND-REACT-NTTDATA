@@ -1,11 +1,18 @@
 import { ChangeEvent, FC, FormEvent } from "react";
 
 import { useState } from "react";
-import useDistricts from "@root/Hooks/useDistricts";
+import useDistricts from "@root/hooks/useDistricts";
 
 import TextInput from "@components/atoms/TextInput";
 import Button from "@components/atoms/Button";
 import Select from "@components/atoms/Select";
+
+import {
+  isValidAddress,
+  isValidPersonName,
+  isValidPhone,
+  isValidReference,
+} from "@root/helpers/validation.helpers";
 
 import "./style.css";
 
@@ -24,7 +31,7 @@ const ShippingForm: FC = () => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    console.log("changing", "name", value);
+
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (value.trim() !== "") {
@@ -36,12 +43,39 @@ const ShippingForm: FC = () => {
     const newErrors: { [key: string]: string } = {};
     const { firstName, lastName, district, address, reference, phone } = formData;
 
-    if (!firstName) newErrors.firstName = "*required";
-    if (!lastName) newErrors.lastName = "*required";
-    if (!district) newErrors.district = "*required";
-    if (!address) newErrors.address = "*required";
-    if (!reference) newErrors.reference = "*required";
-    if (!phone) newErrors.phone = "*required";
+    if (!firstName) {
+      newErrors.firstName = "*required";
+    } else if (!isValidPersonName(firstName)) {
+      newErrors.firstName = "Enter a valid first name";
+    }
+
+    if (!lastName) {
+      newErrors.lastName = "*required";
+    } else if (!isValidPersonName(lastName)) {
+      newErrors.lastName = "Enter a valid last name";
+    }
+
+    if (!district) {
+      newErrors.district = "*required";
+    }
+
+    if (!address) {
+      newErrors.address = "*required";
+    } else if (!isValidAddress(address)) {
+      newErrors.address = "Enter a valid address";
+    }
+
+    if (!reference) {
+      newErrors.reference = "*required";
+    } else if (!isValidReference(reference)) {
+      newErrors.reference = "Enter a valid reference";
+    }
+
+    if (!phone) {
+      newErrors.phone = "*required";
+    } else if (!isValidPhone(phone)) {
+      newErrors.phone = "Enter a valid phone number";
+    }
 
     return newErrors;
   };
@@ -119,7 +153,7 @@ const ShippingForm: FC = () => {
         onChange={handleInputChange}
         hasError={!!errors.phone}
         errorMessage={errors.phone}
-        placeholder="9991234567"
+        placeholder="912345678"
         type="number"
       ></TextInput>
       <Button color="secondary" size="medium" fullWidth={true} type="submit">

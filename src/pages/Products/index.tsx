@@ -13,7 +13,7 @@ import { getCategories } from "@services/category.service";
 import { Product } from "@domain/interfaces/product.interface";
 import { Category } from "@domain/interfaces/category.interface";
 
-import { filterProducts } from "@root/utilities/filter-producs.utility";
+import { filterProducts } from "@root/helpers/filter-producs.helpers";
 
 const ProductsPage: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
