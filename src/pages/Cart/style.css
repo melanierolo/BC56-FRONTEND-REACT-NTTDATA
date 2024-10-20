@@ -1,0 +1,30 @@
+.cart__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .cart__container {
+    grid-template-areas:
+      "shopping-cart shipping-section"
+      "order-summary shipping-section";
+    grid-template-columns: 750px 1fr;
+  }
+
+  .cart__shopping-cart {
+    grid-area: shopping-cart;
+    padding: 0.5rem;
+  }
+
+  .cart__order-summary {
+    grid-area: order-summary;
+    padding: 0.5rem;
+  }
+
+  .cart__shipping-section {
+    grid-area: shipping-section;
+    padding: 0.5rem;
+  }
+}

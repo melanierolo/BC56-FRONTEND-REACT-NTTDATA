@@ -21,6 +21,7 @@ import "./style.css";
 
 const ShippingForm: FC = () => {
   const districts = useDistricts();
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -66,7 +67,7 @@ const ShippingForm: FC = () => {
 
   const handleFormSubmit = () => {
     setDialogOpen(true);
-    alert("Your purchase was successful");
+
     console.log("shipping information", formData);
 
     (Object.keys(formData) as Array<keyof typeof formData>).forEach((key) => {

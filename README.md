@@ -97,7 +97,9 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
 
 
 ```
+
 **NOTAS :**
+
 - Se ha mantenido la organización de carpetas según las funciones de cada una, facilitando la escalabilidad y mantenibilidad del proyecto.
 - La carpeta helpers ahora incluye funciones que implementan la lógica de negocio, mientras que utils contiene funciones puras y stateless.
 - La carpeta contexts se ha añadido para manejar el contexto global, específicamente para el carrito.
@@ -125,3 +127,5 @@ Se ha agregado una nueva página, la cual permite visualizar la lista de product
 
 A continuación se muestran capturas de la implemenación:
 
+![cart-page--desktop](./src/assets/design/cart-page-desktop--implementation.png)
+![cart-page--tablet](./src/assets/design/cart-page-tablet--implementation.png)
