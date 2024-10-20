@@ -1,6 +1,6 @@
-import { ChangeEvent, FC, FormEvent } from "react";
+import { ChangeEvent, FC } from "react";
 
-import { useState } from "react";
+import useForm from "@root/hooks/useForm";
 import useDistricts from "@root/hooks/useDistricts";
 
 import TextInput from "@components/atoms/TextInput";
@@ -18,97 +18,66 @@ import "./style.css";
 
 const ShippingForm: FC = () => {
   const districts = useDistricts();
-  const [formData, setFormData] = useState({
+  const initialValues = {
     firstName: "",
     lastName: "",
     district: "",
     address: "",
     reference: "",
     phone: "",
-  });
-
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    if (value.trim() !== "") {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
   };
 
-  const validateForm = () => {
-    const newErrors: { [key: string]: string } = {};
-    const { firstName, lastName, district, address, reference, phone } = formData;
-
-    if (!firstName) {
-      newErrors.firstName = "*required";
-    } else if (!isValidPersonName(firstName)) {
-      newErrors.firstName = "Enter a valid first name";
-    }
-
-    if (!lastName) {
-      newErrors.lastName = "*required";
-    } else if (!isValidPersonName(lastName)) {
-      newErrors.lastName = "Enter a valid last name";
-    }
-
-    if (!district) {
-      newErrors.district = "*required";
-    }
-
-    if (!address) {
-      newErrors.address = "*required";
-    } else if (!isValidAddress(address)) {
-      newErrors.address = "Enter a valid address";
-    }
-
-    if (!reference) {
-      newErrors.reference = "*required";
-    } else if (!isValidReference(reference)) {
-      newErrors.reference = "Enter a valid reference";
-    }
-
-    if (!phone) {
-      newErrors.phone = "*required";
-    } else if (!isValidPhone(phone)) {
-      newErrors.phone = "Enter a valid phone number";
-    }
-
-    return newErrors;
+  const validators = {
+    firstName: (value: string) => {
+      if (!value) return "*required";
+      if (!isValidPersonName(value)) return "Enter a valid first name";
+      return "";
+    },
+    lastName: (value: string) => {
+      if (!value) return "*required";
+      if (!isValidPersonName(value)) return "Enter a valid last name";
+      return "";
+    },
+    district: (value: string) => {
+      return value ? "" : "*required";
+    },
+    address: (value: string) => {
+      if (!value) return "*required";
+      if (!isValidAddress(value)) return "Enter a valid address";
+      return "";
+    },
+    reference: (value: string) => {
+      if (!value) return "*required";
+      if (!isValidReference(value)) return "Enter a valid reference";
+      return "";
+    },
+    phone: (value: string) => {
+      if (!value) return "*required";
+      if (!isValidPhone(value)) return "Enter a valid phone number";
+      return "";
+    },
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formErrors = validateForm();
-    console.log("errors", formErrors);
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-      return;
-    }
+  const { formData, errors, handleInputChange, handleSubmit } = useForm(initialValues, validators);
 
+  const handleFormSubmit = () => {
     alert("Your purchase was successful");
-    console.log(formData);
+    console.log("shipping information", formData);
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      district: "",
-      address: "",
-      reference: "",
-      phone: "",
+    (Object.keys(formData) as Array<keyof typeof formData>).forEach((key) => {
+      handleInputChange(key, "");
     });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="shipping-form">
+    <form onSubmit={(e) => handleSubmit(e, handleFormSubmit)} className="shipping-form">
       <TextInput
         label="First Name"
         name="firstName"
         value={formData.firstName}
-        onChange={handleInputChange}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          handleInputChange("firstName", e.target.value)
+        }
         hasError={!!errors.firstName}
         errorMessage={errors.firstName}
         placeholder="Joe"
@@ -117,7 +86,9 @@ const ShippingForm: FC = () => {
         label="Last Name"
         name="lastName"
         value={formData.lastName}
-        onChange={handleInputChange}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          handleInputChange("lastName", e.target.value)
+        }
         hasError={!!errors.lastName}
         errorMessage={errors.lastName}
         placeholder="Doe"
@@ -126,7 +97,9 @@ const ShippingForm: FC = () => {
         label="Address"
         name="address"
         value={formData.address}
-        onChange={handleInputChange}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          handleInputChange("address", e.target.value)
+        }
         hasError={!!errors.address}
         errorMessage={errors.address}
         placeholder="123 Main St"
@@ -135,22 +108,26 @@ const ShippingForm: FC = () => {
         label="Reference"
         name="reference"
         value={formData.reference}
-        onChange={handleInputChange}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          handleInputChange("reference", e.target.value)
+        }
         hasError={!!errors.reference}
         errorMessage={errors.reference}
-        placeholder="123 Main St"
+        placeholder="Near the mall"
       ></TextInput>
       <Select
         label="District"
         options={districts}
-        onChange={handleInputChange}
+        onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+          handleInputChange("district", e.target.value)
+        }
         name="district"
       ></Select>
       <TextInput
         label="Phone Number"
         name="phone"
         value={formData.phone}
-        onChange={handleInputChange}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("phone", e.target.value)}
         hasError={!!errors.phone}
         errorMessage={errors.phone}
         placeholder="912345678"
@@ -162,4 +139,5 @@ const ShippingForm: FC = () => {
     </form>
   );
 };
+
 export default ShippingForm;
