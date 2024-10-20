@@ -13,6 +13,14 @@ Este proyecto es un mini marketplace implementado con **TypeScript**, **Vite** y
 - **Consumo de servicios web**: Utiliza la API Fetch para obtener datos, empleando `async` y `await` para manejar las solicitudes de manera eficiente.
 - **Sin uso de bibliotecas externas**: El proyecto está diseñado sin librerías de terceros, utilizando solo código nativo de JavaScript y TypeScript.
 - **Configuraciones de calidad de código**: Se han añadido configuraciones de Prettier y ESLint para garantizar consistencia en el estilo y detectar errores, además de alias para optimizar las rutas de importación.
+- **Página de Resumen del Carrito**: Se ha creado una nueva página llamada **cart**, donde los usuarios pueden:
+  - Visualizar la lista de productos agregados al carrito.
+  - Eliminar, agregar o reducir la cantidad de elementos en el carrito.
+  - Mostrar la imagen en miniatura del producto, nombre, precio, cantidad con controles de incremento y decremento, y un botón para eliminar.
+  - Actualizar el total a pagar en la parte inferior de la tabla.
+  - Los botones de incremento y decremento modificarán la cantidad especificada y actualizarán el ícono del carrito.
+  - El botón eliminar eliminará el producto de la tabla y actualizará el contador del ícono del carrito.
+  - El precio total se actualizará en base a la cantidad de productos en la tabla.
 
 ## Migración a React + TypeScript + Vite
 
@@ -29,7 +37,7 @@ Este proyecto ha sido migrado de JavaScript a **React** y **TypeScript**, siguie
 La arquitectura del proyecto está organizada de la siguiente manera, garantizando una clara separación de responsabilidades:
 
 ```
-/mi-proyecto-market
+/BC56-FRONTEND-REACT-NTTDATA
   ├── /public
   │   ├── vite.svg
   │   └── index.html
@@ -44,22 +52,34 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
   │   │   ├── /atoms
   │   │   ├── /molecules
   │   │   └── /organisms
+  │   ├── /contexts                # Manejo de contextos globales.
+  │   │   └── CartContext.tsx
+  │   ├── /data                    # Datos estáticos y definiciones.
+  │   │   ├── districts-data.d.ts
+  │   │   └── districts-data.js
   │   ├── /domain                  # Contiene la lógica de negocio y las definiciones de datos.
+  │   │   ├── /constants
   │   │   └── /interfaces
-  │   │       ├── category.interface.ts
-  │   │       └── product.interface.ts
+  │   ├── /helpers                 # Funciones que incorporan lógica de negocio.
+  │   │   └── filter-products.helpers.ts
   │   ├── /mappers                 # Carpeta para la lógica de mapeo de datos que facilita la manipulación de datos.
   │   │   ├── category.mapper.ts
   │   │   └── product.mapper.ts
   │   ├── /pages                   # Contiene las páginas.
+  │   │   ├── Cart
   │   │   ├── Home
+  │   │   ├── Login
   │   │   └── Products
+  │   │       └── ProductsRoutes.tsx
   │   ├── /services                # Maneja llamadas a la API y gestiona el almacenamiento local (localStorage).
   │   │   ├── category.service.ts
   │   │   ├── local-storage.service.ts
   │   │   └── product.service.ts
-  │   ├── /utilities
-  │   ├── App.css                  # Estilos globales.
+  │   ├── /store                   # Manejo del estado del carrito.
+  │   │   ├── cartActions.ts
+  │   │   └── cartReducer.ts
+  │   ├── /utils                   # Funciones puras que son sin estado y no dependen de ningún estado externo.
+  │   │   └── validation.utils.ts
   │   ├── App.tsx                  # Componente raíz.
   │   ├── index.css                # Estilos de entrada.
   │   ├── main.tsx                 # Archivo de entrada principal de la aplicación.
@@ -75,7 +95,12 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
   ├── tsconfig.node.json           # Configuración de TypeScript para el entorno Node.js.
   └── vite.config.ts               # Configuración de Vite para la aplicación.
 
+
 ```
+**NOTAS :**
+- Se ha mantenido la organización de carpetas según las funciones de cada una, facilitando la escalabilidad y mantenibilidad del proyecto.
+- La carpeta helpers ahora incluye funciones que implementan la lógica de negocio, mientras que utils contiene funciones puras y stateless.
+- La carpeta contexts se ha añadido para manejar el contexto global, específicamente para el carrito.
 
 ## Prototipo
 
@@ -99,5 +124,4 @@ Se ha agregado una nueva página, la cual permite visualizar la lista de product
 ## Implementación del Proyecto
 
 A continuación se muestran capturas de la implemenación:
-![mobile-home](./src/assets/design/home-implementation.png)
-![products-not-found](./src/assets/design/products-not-found-implementation.png)
+
