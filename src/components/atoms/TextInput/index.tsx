@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, InputHTMLAttributes, KeyboardEvent, ReactNode } from "react";
+import React, { ChangeEvent, FC, InputHTMLAttributes, KeyboardEvent, ReactNode } from "react";
 import { useRef } from "react";
 import "./style.css";
 
