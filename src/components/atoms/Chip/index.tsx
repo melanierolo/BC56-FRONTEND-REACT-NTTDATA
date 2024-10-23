@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import "./style.css";
 
 interface ChipProps {
@@ -8,7 +8,7 @@ interface ChipProps {
 const Chip: FC<ChipProps> = ({ label }) => {
   return (
     <div className="chip">
-      <p className=" chip__label">{label}</p>
+      <span className=" chip__label">{label}</span>
     </div>
   );
 };
