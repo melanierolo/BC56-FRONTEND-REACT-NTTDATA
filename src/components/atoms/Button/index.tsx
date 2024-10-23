@@ -10,22 +10,23 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
 }
 
+const colors = { primary: "btn--primary", secondary: "btn--secondary", none: "btn--none" };
+
+const sizes = {
+  small: "btn--small",
+  medium: "btn--medium",
+  large: "btn--large",
+};
+
 const Button: FC<ButtonProps> = (props) => {
   const {
     color = "primary",
     size = "small",
     disabled = false,
     fullWidth = false,
-    children,
+    children = "button",
     ...extra
   } = props;
-  const colors = { primary: "btn--primary", secondary: "btn--secondary", none: "btn--none" };
-
-  const sizes = {
-    small: "btn--small",
-    medium: "btn--medium",
-    large: "btn--large",
-  };
 
   return (
     <button
