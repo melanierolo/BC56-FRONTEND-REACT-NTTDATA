@@ -33,6 +33,7 @@ const FilterByCategorySection: FC<FilterByCategorySectionProps> = ({
           label="Filter by:"
           options={options}
           onChange={handleCategoryChange}
+          id="category-select"
           value={selectedCategory}
         ></Select>
       </div>

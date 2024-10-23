@@ -125,6 +125,7 @@ const ShippingForm: FC = () => {
         <Select
           label="District"
           options={districts}
+          id="distric-select"
           onChange={(e: ChangeEvent<HTMLSelectElement>) =>
             handleInputChange("district", e.target.value)
           }
