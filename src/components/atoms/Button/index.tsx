@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import React, { ButtonHTMLAttributes, FC } from "react";
 import "./style.css";
 
 export type ColorType = "primary" | "secondary" | "none";
@@ -30,6 +30,7 @@ const Button: FC<ButtonProps> = (props) => {
   return (
     <button
       className={`btn ${colors[color]} ${sizes[size]} ${fullWidth ? "btn--full-width" : ""} ${disabled ? "btn-disabled" : ""}`}
+      disabled={disabled}
       {...extra}
     >
       {children}
