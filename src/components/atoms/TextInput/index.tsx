@@ -2,6 +2,17 @@ import React, { ChangeEvent, FC, InputHTMLAttributes, KeyboardEvent, ReactNode }
 import { useRef } from "react";
 import "./style.css";
 
+type HeightType = "small" | "medium";
+
+const heightInput: Record<HeightType, string> = {
+  small: "text-input__input--small",
+  medium: "text-input__input--medium",
+};
+
+enum KeyCodes {
+  Enter = "Enter",
+}
+
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   children?: ReactNode;
   label?: string;
@@ -10,8 +21,6 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
   startIcon?: string;
   inputClassName?: string;
-  isSuccess?: boolean;
-  successMessage?: string;
   hasError?: boolean;
   errorMessage?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -26,16 +35,13 @@ const TextInput: FC<TextInputProps> = ({
   required,
   inputClassName,
   startIcon = "",
-  isSuccess = false,
   hasError = false,
-  errorMessage,
+  errorMessage = "",
   onChange,
   onPressKeyIntro = () => {},
   ...inputProps
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const heightInput = { small: "text-input__input--small", medium: "text-input__input--medium" };
 
   const getTextInputStyles = (): string => {
     let textInputClasses = "";
@@ -53,7 +59,7 @@ const TextInput: FC<TextInputProps> = ({
   const inputStyles = getTextInputStyles();
 
   const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === KeyCodes.Enter) {
       if (inputRef.current) {
         const inputValue = inputRef.current.value;
         onPressKeyIntro(inputValue);

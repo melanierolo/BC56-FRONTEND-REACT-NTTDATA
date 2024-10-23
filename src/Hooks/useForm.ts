@@ -31,7 +31,9 @@ const useForm = <T extends Record<string, unknown>>(
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>, onSubmit: () => void) => {
     e.preventDefault();
+
     const formErrors = validateForm();
+
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       return;

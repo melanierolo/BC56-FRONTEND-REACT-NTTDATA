@@ -1,4 +1,5 @@
 import { ChangeEvent, FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import useForm from "@root/hooks/useForm";
 import useDistricts from "@root/hooks/useDistricts";
@@ -43,7 +44,8 @@ const ShippingForm: FC = () => {
       return "";
     },
     district: (value: string) => {
-      return value ? "" : "*required";
+      if (!value) return "*required";
+      return "";
     },
     address: (value: string) => {
       if (!value) return "*required";
@@ -66,13 +68,21 @@ const ShippingForm: FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleFormSubmit = () => {
-    setDialogOpen(true);
-
     console.log("shipping information", formData);
+
+    setDialogOpen(true);
 
     (Object.keys(formData) as Array<keyof typeof formData>).forEach((key) => {
       handleInputChange(key, "");
     });
+  };
+
+  const navigate = useNavigate();
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+
+    navigate("/products");
   };
 
   return (
@@ -88,7 +98,7 @@ const ShippingForm: FC = () => {
           hasError={!!errors.firstName}
           errorMessage={errors.firstName}
           placeholder="Joe"
-        ></TextInput>
+        />
         <TextInput
           label="Last Name"
           name="lastName"
@@ -99,7 +109,7 @@ const ShippingForm: FC = () => {
           hasError={!!errors.lastName}
           errorMessage={errors.lastName}
           placeholder="Doe"
-        ></TextInput>
+        />
         <TextInput
           label="Address"
           name="address"
@@ -110,7 +120,7 @@ const ShippingForm: FC = () => {
           hasError={!!errors.address}
           errorMessage={errors.address}
           placeholder="123 Main St"
-        ></TextInput>
+        />
         <TextInput
           label="Reference"
           name="reference"
@@ -121,16 +131,15 @@ const ShippingForm: FC = () => {
           hasError={!!errors.reference}
           errorMessage={errors.reference}
           placeholder="Near the mall"
-        ></TextInput>
+        />
         <Select
           label="District"
           options={districts}
           id="distric-select"
-          onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-            handleInputChange("district", e.target.value)
-          }
-          name="district"
-        ></Select>
+          onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+            handleInputChange("district", e.target.value);
+          }}
+        />
         <TextInput
           label="Phone Number"
           name="phone"
@@ -142,17 +151,21 @@ const ShippingForm: FC = () => {
           errorMessage={errors.phone}
           placeholder="912345678"
           type="number"
-        ></TextInput>
-        <Button color="secondary" size="medium" fullWidth={true} type="submit">
-          Purchase
-        </Button>
+        />
+        <Button
+          color="secondary"
+          size="medium"
+          fullWidth={true}
+          type="submit"
+          children="Purchase"
+        />
       </form>
       <Dialog
         open={dialogOpen}
-        onClose={() => setDialogOpen(false)}
+        onClose={() => handleDialogClose()}
         imageUrl={iconSuccess}
         message="Your purchase was successful"
-      ></Dialog>
+      />
     </>
   );
 };

@@ -24,12 +24,12 @@ const Select: FC<SelectProps> = ({
   return (
     <div className="select">
       {label && (
-        <label htmlFor={`select-${id}`} className="select-label">
+        <label htmlFor={`${id}-select`} className="select-label">
           {label}
         </label>
       )}
       <div className="select-wrapper">
-        <select className="select-input" {...selectProps} id={`select-${id}`}>
+        <select className="select-input" id={`${id}-select`} onChange={onChange} {...selectProps}>
           <option value="">Choose an option</option>
           {options?.map((item, index) => (
             <option key={index} value={item.value}>
