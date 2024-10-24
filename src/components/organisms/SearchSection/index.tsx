@@ -8,7 +8,7 @@ import "./style.css";
 
 interface SearchSectionProps {
   searchTerm: string;
-  setSearchTerm: (term: string) => void;
+  onChange: (term: string) => void;
 }
 const searchSectionText = {
   title: "All You Need, Right Here",
@@ -17,7 +17,7 @@ const searchSectionText = {
   placeholder: "Search ...",
 };
 
-const SearchSection: FC<SearchSectionProps> = ({ searchTerm, setSearchTerm }) => {
+const SearchSection: FC<SearchSectionProps> = ({ searchTerm, onChange }) => {
   return (
     <section className="search">
       <div className="search__container">
@@ -27,7 +27,7 @@ const SearchSection: FC<SearchSectionProps> = ({ searchTerm, setSearchTerm }) =>
           startIcon={searchIcon}
           placeholder={searchSectionText.placeholder}
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
         />
       </div>
     </section>

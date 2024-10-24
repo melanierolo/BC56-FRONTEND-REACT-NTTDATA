@@ -60,7 +60,7 @@ const ProductsPage: FC = () => {
   return (
     <main>
       <Container>
-        <SearchSection searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <SearchSection searchTerm={searchTerm} onChange={setSearchTerm} />
         <FilterByCategorySection
           options={categories}
           onCategoryChange={handleCategoryChange}
