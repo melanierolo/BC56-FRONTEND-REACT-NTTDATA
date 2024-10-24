@@ -10,14 +10,14 @@ interface SearchSectionProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
 }
+const searchSectionText = {
+  title: "All You Need, Right Here",
+  paragraph:
+    "Find a wide range of products tailored just for you! Explore and filter to discover your favorites",
+  placeholder: "Search ...",
+};
 
 const SearchSection: FC<SearchSectionProps> = ({ searchTerm, setSearchTerm }) => {
-  const searchSectionText = {
-    title: "All You Need, Right Here",
-    paragraph:
-      "Find a wide range of products tailored just for you! Explore and filter to discover your favorites",
-    placeholder: "Search ...",
-  };
   return (
     <section className="search">
       <div className="search__container">
