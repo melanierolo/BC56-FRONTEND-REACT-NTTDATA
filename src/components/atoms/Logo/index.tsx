@@ -5,11 +5,7 @@ import "./style.css";
 const Logo: FC = () => {
   return (
     <div className="logo-markethub">
-      <img
-        className="logo-markethub__img"
-        src={marketHubLogo}
-        alt="MarketHub - logotype"
-      ></img>
+      <img className="logo-markethub__img" src={marketHubLogo} alt="MarketHub - logotype" />
     </div>
   );
 };
