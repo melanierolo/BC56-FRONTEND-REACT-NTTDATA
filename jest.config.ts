@@ -15,6 +15,9 @@ const config: Config.InitialOptions = {
     "@domain/(.*)": "<rootDir>/src/domain/$1",
     "@pages/(.*)": "<rootDir>/src/pages/$1",
     "@services/(.*)": "<rootDir>/src/services/$1",
+
+    // Proxy CSS and LESS imports for testing
+    "\\.(css|less)$": "identity-obj-proxy",
   },
 };
 
