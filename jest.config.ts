@@ -18,6 +18,9 @@ const config: Config.InitialOptions = {
 
     // Proxy CSS and LESS imports for testing
     "\\.(css|less)$": "identity-obj-proxy",
+
+    // Mock svg imports
+    "\\.(svg)$": "<rootDir>/src/__mocks__/svgMock.js",
   },
 };
 
