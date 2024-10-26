@@ -20,7 +20,9 @@ const config: Config.InitialOptions = {
     "\\.(css|less)$": "identity-obj-proxy",
 
     // Mock svg imports
-    "\\.(svg)$": "<rootDir>/src/__mocks__/svgMock.js",
+    "\\.(svg)$": "<rootDir>/src/__mocks__/svg.mocks.js",
+
+    "\\.(jpg|jpeg|png)$": "<rootDir>/__mocks__/file.mocks.js",
   },
 };
 

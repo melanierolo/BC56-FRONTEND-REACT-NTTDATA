@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import SearchSection from "@components/organisms/SearchSection";
 import Container from "@components/organisms/Container";
@@ -13,9 +13,13 @@ import { getCategories } from "@services/category.service";
 import { Product } from "@domain/interfaces/product.interface";
 import { Category } from "@domain/interfaces/category.interface";
 
+import { CartContext } from "@root/contexts/CartContext";
+
 import { filterProducts } from "@root/helpers/filter-producs.helpers";
 
 const ProductsPage: FC = () => {
+  const { addProduct } = useContext(CartContext);
+
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -70,7 +74,7 @@ const ProductsPage: FC = () => {
         {hasSearch && filteredProducts.length === 0 ? (
           <NotFoundCard />
         ) : (
-          <ProductList products={filteredProducts}></ProductList>
+          <ProductList products={filteredProducts} onAddToCart={addProduct}></ProductList>
         )}
       </Container>
     </main>

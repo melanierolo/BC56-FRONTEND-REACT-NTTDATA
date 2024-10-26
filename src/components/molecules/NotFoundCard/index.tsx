@@ -4,7 +4,7 @@ import notFound from "@assets/images/not-found.png";
 
 import "./style.css";
 
-interface NotFoundCardProps {
+export interface NotFoundCardProps {
   message?: string;
 }
 
@@ -13,7 +13,7 @@ const NotFoundCard: FC<NotFoundCardProps> = ({ message }) => {
     <article className="not-found">
       <h3 className="not-found__title">Search Results</h3>
       <p className="not-found__parargaph">
-        {message || "No results found.Please adjust your filters or keyword"}
+        {message || "No results found. Please adjust your filters or keyword"}
       </p>
       <figure>
         <img className="not-found__img" src={notFound} alt="not found - image" />

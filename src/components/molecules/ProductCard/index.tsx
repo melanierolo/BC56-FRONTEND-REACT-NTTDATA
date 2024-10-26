@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 
 import { Product } from "@domain/interfaces/product.interface";
 import { USD_CURRENCY } from "@root/domain/constants/currencies.constants";
@@ -6,18 +6,16 @@ import { USD_CURRENCY } from "@root/domain/constants/currencies.constants";
 import Button from "@components/atoms/Button";
 import Chip from "@components/atoms/Chip";
 
-import { CartContext } from "@root/contexts/CartContext";
-
 import "./style.css";
 
 interface ProductCardProps {
   product: Product;
+  onAddToCart: (product: Product, quantity: number) => void;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ product }) => {
-  const { addProduct } = useContext(CartContext);
+const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
   const handleAddToCart = () => {
-    addProduct(product, 1);
+    onAddToCart(product, 1);
   };
 
   return (
