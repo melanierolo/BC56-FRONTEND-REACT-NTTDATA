@@ -21,6 +21,7 @@ Este proyecto es un mini marketplace implementado con **TypeScript**, **Vite** y
   - Los botones de incremento y decremento modificarán la cantidad especificada y actualizarán el ícono del carrito.
   - El botón eliminar eliminará el producto de la tabla y actualizará el contador del ícono del carrito.
   - El precio total se actualizará en base a la cantidad de productos en la tabla.
+- **Pruebas unitarias**: Se han implementado pruebas unitarias en el proyecto utilizando Jest y Testing Library, cubriendo las principales funcionalidades y componentes.
 
 ## Migración a React + TypeScript + Vite
 
