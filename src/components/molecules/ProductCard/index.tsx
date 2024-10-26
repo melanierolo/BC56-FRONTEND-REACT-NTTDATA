@@ -29,7 +29,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
       </figure>
       <div className="card__content">
         <p className="card__title">{product.title}</p>
-        <p className="card__brand">{product.brand}</p>
+        <p className="card__brand">{product.brand || ""}</p>
         <div className="card__chips">
           {product.tags.map((tag: string, key: number) => {
             return <Chip key={`tag-${key}`} label={tag}></Chip>;
