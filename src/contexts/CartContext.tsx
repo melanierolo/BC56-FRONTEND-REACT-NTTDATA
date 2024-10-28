@@ -1,11 +1,11 @@
 import { createContext, useReducer, FC, ReactNode } from "react";
-import { cartReducer } from "@root/store/cartReducer";
+import { cartReducer } from "@root/store/cart/cartReducer";
 import {
   addProductAction,
   decreaseProductAction,
   removeProductAction,
-} from "@root/store/cartActions";
-import { CartItem } from "@root/store/cartReducer";
+} from "@root/store/cart/cartActions";
+import { CartItem } from "@root/store/cart/cartReducer";
 import { Product } from "@domain/interfaces/product.interface";
 
 interface CartContextType {

@@ -4,7 +4,7 @@ import {
   ADD_PRODUCT,
   DECREASE_PRODUCT,
   REMOVE_PRODUCT,
-} from "@root/store/cartActions";
+} from "@root/store/cart/cartActions";
 import {
   getDataFromLocalStorage,
   setDataToLocalStorage,
