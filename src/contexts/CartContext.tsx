@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect, FC, ReactNode } from "react";
+import { createContext, useReducer, FC, ReactNode } from "react";
 import { cartReducer } from "@root/store/cartReducer";
 import {
   addProductAction,
@@ -24,11 +24,12 @@ export const CartContext = createContext<CartContextType>({
   removeProduct: () => {},
 });
 
+const initialFromLocalStorage = {
+  cart: JSON.parse(localStorage.getItem("cart") || "[]"),
+  totalItems: JSON.parse(localStorage.getItem("cartTotalItems") || "0"),
+};
+
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const initialFromLocalStorage = {
-    cart: JSON.parse(localStorage.getItem("cart") || "[]"),
-    totalItems: JSON.parse(localStorage.getItem("cartTotalItems") || "0"),
-  };
   const [state, dispatch] = useReducer(cartReducer, initialFromLocalStorage);
 
   const addProduct = (item: Product, quantityOfItems: number) => {
@@ -42,11 +43,6 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const removeProduct = (id: number) => {
     dispatch(removeProductAction(id));
   };
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(state.cart));
-    localStorage.setItem("cartTotalItems", JSON.stringify(state.totalItems));
-  }, [state.cart, state.totalItems]);
 
   return (
     <CartContext.Provider

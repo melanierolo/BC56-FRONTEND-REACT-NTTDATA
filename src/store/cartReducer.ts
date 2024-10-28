@@ -5,6 +5,10 @@ import {
   DECREASE_PRODUCT,
   REMOVE_PRODUCT,
 } from "@root/store/cartActions";
+import {
+  getDataFromLocalStorage,
+  setDataToLocalStorage,
+} from "@root/services/local-storage.service";
 
 export interface CartItem {
   item: Product;
@@ -17,8 +21,13 @@ interface CartState {
 }
 
 const initialCartState: CartState = {
-  cart: JSON.parse(localStorage.getItem("cart") || "[]"),
-  totalItems: JSON.parse(localStorage.getItem("cartTotalItems") || "0"),
+  cart: getDataFromLocalStorage<CartItem[]>("cart") || [],
+  totalItems: getDataFromLocalStorage<number>("cartTotalItems") || 0,
+};
+
+const updateLocalStorage = (cart: CartItem[], totalItems: number) => {
+  setDataToLocalStorage("cart", cart);
+  setDataToLocalStorage("cartTotalItems", totalItems);
 };
 
 export const cartReducer = (
@@ -31,67 +40,66 @@ export const cartReducer = (
         (product) => product.item.id === action.payload.item.id,
       );
       if (existingProduct) {
-        const updatedCart = state.cart.map((product) =>
-          product.item.id === action.payload.item.id
-            ? {
-                ...product,
-                quantityOfItems: product.quantityOfItems + 1,
-              }
-            : product,
-        );
+        const updatedCart = state.cart.map((product) => {
+          if (product.item.id === action.payload.item.id) {
+            return {
+              ...product,
+              quantityOfItems: product.quantityOfItems + 1,
+            };
+          } else {
+            return product;
+          }
+        });
+        setDataToLocalStorage("cart", updatedCart);
+        setDataToLocalStorage("cartTotalItems", state.totalItems + 1);
         return {
           ...state,
           cart: updatedCart,
           totalItems: state.totalItems + 1,
         };
       } else {
+        const newCart = [
+          ...state.cart,
+          { item: action.payload.item, quantityOfItems: action.payload.itemQuantity },
+        ];
+        setDataToLocalStorage("cart", newCart);
+        setDataToLocalStorage("cartTotalItems", state.totalItems + 1);
         return {
           ...state,
-          cart: [
-            ...state.cart,
-            { item: action.payload.item, quantityOfItems: action.payload.itemQuantity },
-          ],
+          cart: newCart,
           totalItems: state.totalItems + 1,
         };
       }
 
-    case DECREASE_PRODUCT:
-      const productToDecrease = state.cart.find((product) => product.item.id === action.payload.id);
+    case DECREASE_PRODUCT: {
+      const updatedCart: CartItem[] = [];
+      let newTotalItems = state.totalItems;
 
-      if (productToDecrease) {
-        const updatedQuantity = productToDecrease.quantityOfItems - 1;
-        if (updatedQuantity >= 0) {
-          const updatedCart = state.cart.map((product) =>
-            product.item.id === action.payload.id
-              ? {
-                  ...product,
-                  quantityOfItems: updatedQuantity,
-                }
-              : product,
-          );
-
-          return { ...state, cart: updatedCart, totalItems: state.totalItems - 1 };
+      for (const product of state.cart) {
+        if (product.item.id === action.payload.id) {
+          if (product.quantityOfItems > 1) {
+            updatedCart.push({ ...product, quantityOfItems: product.quantityOfItems - 1 });
+          }
+          newTotalItems -= 1;
+        } else {
+          updatedCart.push(product);
         }
-      } else {
-        return {
-          ...state,
-          cart: state.cart.filter((product) => product.item.id !== action.payload.id),
-          totalItems: state.totalItems - 1,
-        };
       }
-      return state;
+
+      updateLocalStorage(updatedCart, newTotalItems);
+
+      return { cart: updatedCart, totalItems: newTotalItems };
+    }
 
     case REMOVE_PRODUCT:
       const productToRemove = state.cart.find((product) => product.item.id === action.payload.id);
-      if (productToRemove) {
-        const updatedCart = state.cart.filter((product) => product.item.id !== action.payload.id);
-        return {
-          ...state,
-          cart: updatedCart,
-          totalItems: state.totalItems - productToRemove.quantityOfItems,
-        };
-      }
-      return state;
+      if (!productToRemove) return state;
+
+      const updatedCart = state.cart.filter((product) => product.item.id !== action.payload.id);
+      const newTotalItems = state.totalItems - productToRemove.quantityOfItems;
+      updateLocalStorage(updatedCart, newTotalItems);
+
+      return { cart: updatedCart, totalItems: newTotalItems };
 
     default:
       return state;
