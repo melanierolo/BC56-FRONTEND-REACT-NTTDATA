@@ -7,14 +7,30 @@ import HomePage from "@pages/Home";
 import ProductsPage from "@pages/Products";
 import CartPage from "@pages/Cart";
 
+import { PrivateRoutes } from "@root/router/PrivateRoutes";
+
 const ProductsRoutes = () => {
   return (
     <>
       <Header></Header>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/products" element={<ProductsPage />}></Route>
-        <Route path="/cart" element={<CartPage />}></Route>
+        <Route
+          path="/products"
+          element={
+            <PrivateRoutes>
+              <ProductsPage />
+            </PrivateRoutes>
+          }
+        ></Route>
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoutes>
+              <CartPage />
+            </PrivateRoutes>
+          }
+        ></Route>
         <Route path="*" element={<HomePage />}></Route>
       </Routes>
       <Footer></Footer>

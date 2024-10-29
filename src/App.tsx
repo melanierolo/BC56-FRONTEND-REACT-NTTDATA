@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import ProductsRoutes from "@pages/ProductsRoutes";
-
+import ProductsRoutes from "@root/pages/ProductsRoutes";
 import LoginPage from "@root/pages/Login";
+import { PublicRoutes } from "@root/router/PublicRoutes";
 
 import { CartProvider } from "@root/contexts/CartContext";
 import { AuthProvider } from "@root/contexts/AuthContext";
@@ -13,7 +13,16 @@ function App() {
       <CartProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="login" element={<LoginPage />}></Route>
+            <Route
+              path="/login/*"
+              element={
+                <PublicRoutes>
+                  <Routes>
+                    <Route path="/*" element={<LoginPage />} />
+                  </Routes>
+                </PublicRoutes>
+              }
+            />
             <Route path="/*" element={<ProductsRoutes />}></Route>
           </Routes>
         </BrowserRouter>

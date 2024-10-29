@@ -15,7 +15,7 @@ const Header: FC = () => {
 
   const onLogout = () => {
     logout();
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -41,11 +41,9 @@ const Header: FC = () => {
                 </li>
               ) : (
                 <li className="nav__item">
-                  <li className="nav__item">
-                    <NavLink className="nav__link" to="/login">
-                      Sign in
-                    </NavLink>
-                  </li>
+                  <NavLink className="nav__link" to="/login">
+                    Sign in
+                  </NavLink>
                 </li>
               )}
               <li>

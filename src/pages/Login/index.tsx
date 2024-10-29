@@ -17,7 +17,7 @@ const LoginPage: FC = () => {
     try {
       const result = await loginUser(username, password);
       if (result.success) {
-        alert(`Login successful: ${JSON.stringify(result.data)}`);
+        //console.log(`Login successful: ${JSON.stringify(result.data)}`);
         login(result.data.accessToken, result.data.firstName);
         navigate("/products");
       } else {
