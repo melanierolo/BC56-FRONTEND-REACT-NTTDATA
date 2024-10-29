@@ -10,7 +10,7 @@ import Container from "../Container";
 import { AuthContext } from "@root/contexts/AuthContext";
 
 const Header: FC = () => {
-  const { state, logout } = useContext(AuthContext);
+  const { authState, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -34,9 +34,9 @@ const Header: FC = () => {
                   Products
                 </NavLink>
               </li>
-              {state.isAuthenticated ? (
+              {authState.isAuthenticated ? (
                 <li className="nav__item">
-                  <span className="nav__item--span">Welcome {state.firstName ?? "User"}</span>
+                  <span className="nav__item--span">Welcome {authState.firstName ?? "User"}</span>
                   <Button size="small" children="Logout" onClick={onLogout} />
                 </li>
               ) : (

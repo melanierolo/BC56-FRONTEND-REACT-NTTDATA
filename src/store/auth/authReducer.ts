@@ -1,4 +1,4 @@
-import { AuthActionsTypes, LOGIN, LOGOUT } from "./AuthActions";
+import { AuthActionsTypes, LOGIN, LOGOUT } from "./authActions";
 
 export interface AuthState {
   isAuthenticated: boolean;
@@ -6,10 +6,10 @@ export interface AuthState {
   firstName: string | null;
 }
 
-export const initialAuthState: AuthState = {
-  isAuthenticated: false,
-  token: null,
-  firstName: null,
+const initialAuthState: AuthState = {
+  isAuthenticated: sessionStorage.getItem("authToken") ? true : false,
+  token: sessionStorage.getItem("authToken"),
+  firstName: sessionStorage.getItem("firstName"),
 };
 
 const authReducer = (state: AuthState = initialAuthState, action: AuthActionsTypes): AuthState => {
@@ -25,11 +25,12 @@ const authReducer = (state: AuthState = initialAuthState, action: AuthActionsTyp
       };
     case LOGOUT:
       sessionStorage.removeItem("authToken");
-      sessionStorage.removeItem("username");
+      sessionStorage.removeItem("firstName");
       return { isAuthenticated: false, token: null, firstName: null };
     default:
       return state;
   }
 };
 
+export { initialAuthState };
 export default authReducer;
