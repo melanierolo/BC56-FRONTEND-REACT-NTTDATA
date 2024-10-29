@@ -1,11 +1,23 @@
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
+import { FC, useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+
 import Logo from "@components/atoms/Logo";
-import CartWidget from "@root/components/molecules/CartWidget";
+import CartWidget from "@components/molecules/CartWidget";
+import Button from "@components/atoms/Button";
+
 import "./style.css";
 import Container from "../Container";
+import { AuthContext } from "@root/contexts/AuthContext";
 
 const Header: FC = () => {
+  const { state, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <header>
       <Container>
@@ -22,6 +34,20 @@ const Header: FC = () => {
                   Products
                 </NavLink>
               </li>
+              {state.isAuthenticated ? (
+                <li className="nav__item">
+                  <span className="nav__item--span">Welcome {state.firstName ?? "User"}</span>
+                  <Button size="small" children="Logout" onClick={onLogout} />
+                </li>
+              ) : (
+                <li className="nav__item">
+                  <li className="nav__item">
+                    <NavLink className="nav__link" to="/login">
+                      Sign in
+                    </NavLink>
+                  </li>
+                </li>
+              )}
               <li>
                 <NavLink to="/cart">
                   <CartWidget />

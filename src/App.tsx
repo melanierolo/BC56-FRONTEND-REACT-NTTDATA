@@ -4,18 +4,21 @@ import ProductsRoutes from "@pages/ProductsRoutes";
 
 import LoginPage from "@root/pages/Login";
 
-import { CartProvider } from "./contexts/CartContext";
+import { CartProvider } from "@root/contexts/CartContext";
+import { AuthProvider } from "@root/contexts/AuthContext";
 
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="login" element={<LoginPage />}></Route>
-          <Route path="/*" element={<ProductsRoutes />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="login" element={<LoginPage />}></Route>
+            <Route path="/*" element={<ProductsRoutes />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 

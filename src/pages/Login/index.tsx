@@ -1,5 +1,7 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "@root/contexts/AuthContext";
 
 import LoginForm from "@components/organisms/LoginForm/index";
 
@@ -8,6 +10,7 @@ import { loginUser } from "@services/auth.services";
 import "./style.css";
 
 const LoginPage: FC = () => {
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (username: string, password: string) => {
@@ -15,6 +18,7 @@ const LoginPage: FC = () => {
       const result = await loginUser(username, password);
       if (result.success) {
         alert(`Login successful: ${JSON.stringify(result.data)}`);
+        login(result.data.accessToken, result.data.firstName);
         navigate("/products");
       } else {
         console.error(result.message || "Incorrect username or password");
