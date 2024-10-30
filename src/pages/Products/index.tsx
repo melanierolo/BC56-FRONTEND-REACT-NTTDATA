@@ -6,6 +6,7 @@ import Container from "@components/organisms/Container";
 import ProductList from "@components/organisms/ProductList";
 import FilterByCategorySection from "@components/organisms/FilterByCategorySection";
 import NotFoundCard from "@components/molecules/NotFoundCard";
+import Pagination from "@components/organisms/Pagination";
 
 import { getProducts } from "@services/product.service";
 import { getCategories } from "@services/category.service";
@@ -17,6 +18,8 @@ import CartContext from "@root/contexts/CartContext";
 
 import { filterProducts } from "@root/helpers/filter-producs.helpers";
 
+import { usePagination } from "@root/hooks/usePagination";
+
 const ProductsPage: FC = () => {
   const { addProduct } = useContext(CartContext);
 
@@ -26,6 +29,13 @@ const ProductsPage: FC = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [hasSearch, setHasSearch] = useState<boolean>(false);
+
+  //pagination
+  const itemsPerPage = 10;
+  const { currentData, currentPage, totalPages, paginate } = usePagination(
+    filteredProducts,
+    itemsPerPage,
+  );
 
   const getDataProducts = async (): Promise<void> => {
     try {
@@ -70,11 +80,14 @@ const ProductsPage: FC = () => {
           onCategoryChange={handleCategoryChange}
           selectedCategory={selectedCategory}
           totalProducts={filteredProducts.length}
-        ></FilterByCategorySection>
+        />
         {hasSearch && filteredProducts.length === 0 ? (
           <NotFoundCard />
         ) : (
-          <ProductList products={filteredProducts} onAddToCart={addProduct}></ProductList>
+          <>
+            <ProductList products={currentData()} onAddToCart={addProduct} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={paginate} />
+          </>
         )}
       </Container>
     </main>
