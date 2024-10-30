@@ -1,7 +1,7 @@
 import { FC } from "react";
 import shoppingCartIcon from "@assets/icons/shopping-cart-icon.svg";
 import { useContext } from "react";
-import { CartContext } from "@root/contexts/CartContext";
+import CartContext from "@root/contexts/CartContext";
 
 import "./style.css";
 

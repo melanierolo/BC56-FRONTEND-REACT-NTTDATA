@@ -4,8 +4,8 @@ import ProductsRoutes from "@root/pages/ProductsRoutes";
 import LoginPage from "@root/pages/Login";
 import { PublicRoutes } from "@root/router/PublicRoutes";
 
-import { CartProvider } from "@root/contexts/CartContext";
-import { AuthProvider } from "@root/contexts/AuthContext";
+import { CartProvider } from "@root/contexts/CartProvider";
+import { AuthProvider } from "@root/contexts/AuthProvider";
 
 function App() {
   return (

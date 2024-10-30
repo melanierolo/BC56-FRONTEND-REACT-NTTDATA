@@ -1,10 +1,5 @@
-import { createContext, useReducer, FC, ReactNode } from "react";
-import { cartReducer } from "@root/store/cart/cartReducer";
-import {
-  addProductAction,
-  decreaseProductAction,
-  removeProductAction,
-} from "@root/store/cart/cartActions";
+import { createContext } from "react";
+
 import { CartItem } from "@root/store/cart/cartReducer";
 import { Product } from "@domain/interfaces/product.interface";
 
@@ -16,7 +11,7 @@ interface CartContextType {
   removeProduct: (id: number) => void;
 }
 
-export const CartContext = createContext<CartContextType>({
+const CartContext = createContext<CartContextType>({
   cart: [],
   totalItems: 0,
   addProduct: () => {},
@@ -24,37 +19,4 @@ export const CartContext = createContext<CartContextType>({
   removeProduct: () => {},
 });
 
-const initialFromLocalStorage = {
-  cart: JSON.parse(localStorage.getItem("cart") || "[]"),
-  totalItems: JSON.parse(localStorage.getItem("cartTotalItems") || "0"),
-};
-
-export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, initialFromLocalStorage);
-
-  const addProduct = (item: Product, quantityOfItems: number) => {
-    dispatch(addProductAction(item, quantityOfItems));
-  };
-
-  const decreaseProduct = (id: number) => {
-    dispatch(decreaseProductAction(id));
-  };
-
-  const removeProduct = (id: number) => {
-    dispatch(removeProductAction(id));
-  };
-
-  return (
-    <CartContext.Provider
-      value={{
-        cart: state.cart,
-        totalItems: state.totalItems,
-        addProduct,
-        decreaseProduct,
-        removeProduct,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
-  );
-};
+export default CartContext;

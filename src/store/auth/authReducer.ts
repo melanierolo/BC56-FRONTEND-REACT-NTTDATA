@@ -6,17 +6,18 @@ export interface AuthState {
   firstName: string | null;
 }
 
-const initialAuthState: AuthState = {
+export const initialAuthState: AuthState = {
   isAuthenticated: sessionStorage.getItem("authToken") ? true : false,
   token: sessionStorage.getItem("authToken"),
   firstName: sessionStorage.getItem("firstName"),
 };
 
-const authReducer = (state: AuthState = initialAuthState, action: AuthActionsTypes): AuthState => {
+export const authReducer = (
+  state: AuthState = initialAuthState,
+  action: AuthActionsTypes,
+): AuthState => {
   switch (action.type) {
     case LOGIN:
-      sessionStorage.setItem("authToken", action.payload.token);
-      sessionStorage.setItem("firstName", action.payload.firstName);
       return {
         ...state,
         isAuthenticated: true,
@@ -24,13 +25,8 @@ const authReducer = (state: AuthState = initialAuthState, action: AuthActionsTyp
         firstName: action.payload.firstName,
       };
     case LOGOUT:
-      sessionStorage.removeItem("authToken");
-      sessionStorage.removeItem("firstName");
       return { isAuthenticated: false, token: null, firstName: null };
     default:
       return state;
   }
 };
-
-export { initialAuthState };
-export default authReducer;

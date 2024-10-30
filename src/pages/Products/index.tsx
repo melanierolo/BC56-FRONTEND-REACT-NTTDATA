@@ -13,7 +13,7 @@ import { getCategories } from "@services/category.service";
 import { Product } from "@domain/interfaces/product.interface";
 import { Category } from "@domain/interfaces/category.interface";
 
-import { CartContext } from "@root/contexts/CartContext";
+import CartContext from "@root/contexts/CartContext";
 
 import { filterProducts } from "@root/helpers/filter-producs.helpers";
 

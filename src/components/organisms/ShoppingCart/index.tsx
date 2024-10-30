@@ -4,7 +4,7 @@ import Table from "@components/organisms/Table";
 import Button from "@components/atoms/Button";
 import QuantityStepper from "@components/molecules/QuantityStepper";
 
-import { CartContext } from "@root/contexts/CartContext";
+import CartContext from "@root/contexts/CartContext";
 
 import { Product } from "@domain/interfaces/product.interface";
 

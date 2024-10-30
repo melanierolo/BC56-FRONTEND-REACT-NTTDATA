@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 
-import { CartContext } from "@root/contexts/CartContext";
+import CartContext from "@root/contexts/CartContext";
 
 import OrderSummaryCard from "@components/molecules/OrderSummaryCard";
 

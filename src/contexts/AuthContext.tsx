@@ -1,6 +1,5 @@
-import { createContext, useReducer, FC, ReactNode } from "react";
-import authReducer, { AuthState, initialAuthState } from "@root/store/auth/authReducer";
-import { loginAction, logoutAction } from "@root/store/auth/authActions";
+import { createContext } from "react";
+import { AuthState, initialAuthState } from "@root/store/auth/authReducer";
 
 interface AuthContextType {
   authState: AuthState;
@@ -13,19 +12,3 @@ export const AuthContext = createContext<AuthContextType>({
   login: () => {},
   logout: () => {},
 });
-
-export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [authState, dispatch] = useReducer(authReducer, initialAuthState);
-
-  const login = (token: string, firstName: string) => {
-    dispatch(loginAction(token, firstName));
-  };
-
-  const logout = () => {
-    dispatch(logoutAction());
-  };
-
-  return (
-    <AuthContext.Provider value={{ authState, login, logout }}>{children}</AuthContext.Provider>
-  );
-};

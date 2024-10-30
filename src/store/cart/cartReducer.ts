@@ -5,10 +5,7 @@ import {
   DECREASE_PRODUCT,
   REMOVE_PRODUCT,
 } from "@root/store/cart/cartActions";
-import {
-  getDataFromLocalStorage,
-  setDataToLocalStorage,
-} from "@root/services/local-storage.service";
+import { getDataFromLocalStorage } from "@root/services/local-storage.service";
 
 export interface CartItem {
   item: Product;
@@ -23,11 +20,6 @@ interface CartState {
 const initialCartState: CartState = {
   cart: getDataFromLocalStorage<CartItem[]>("cart") || [],
   totalItems: getDataFromLocalStorage<number>("cartTotalItems") || 0,
-};
-
-const updateLocalStorage = (cart: CartItem[], totalItems: number) => {
-  setDataToLocalStorage("cart", cart);
-  setDataToLocalStorage("cartTotalItems", totalItems);
 };
 
 export const cartReducer = (
@@ -50,8 +42,7 @@ export const cartReducer = (
             return product;
           }
         });
-        setDataToLocalStorage("cart", updatedCart);
-        setDataToLocalStorage("cartTotalItems", state.totalItems + 1);
+
         return {
           ...state,
           cart: updatedCart,
@@ -62,8 +53,7 @@ export const cartReducer = (
           ...state.cart,
           { item: action.payload.item, quantityOfItems: action.payload.itemQuantity },
         ];
-        setDataToLocalStorage("cart", newCart);
-        setDataToLocalStorage("cartTotalItems", state.totalItems + 1);
+
         return {
           ...state,
           cart: newCart,
@@ -86,8 +76,6 @@ export const cartReducer = (
         }
       }
 
-      updateLocalStorage(updatedCart, newTotalItems);
-
       return { cart: updatedCart, totalItems: newTotalItems };
     }
 
@@ -97,7 +85,6 @@ export const cartReducer = (
 
       const updatedCart = state.cart.filter((product) => product.item.id !== action.payload.id);
       const newTotalItems = state.totalItems - productToRemove.quantityOfItems;
-      updateLocalStorage(updatedCart, newTotalItems);
 
       return { cart: updatedCart, totalItems: newTotalItems };
 
