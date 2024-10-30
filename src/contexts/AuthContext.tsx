@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { AuthState, initialAuthState } from "@root/store/auth/authReducer";
 
-interface AuthContextType {
+export interface AuthContextType {
   authState: AuthState;
   login: (token: string, firstName: string) => void;
   logout: () => void;

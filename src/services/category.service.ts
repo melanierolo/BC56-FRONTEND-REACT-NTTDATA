@@ -12,6 +12,6 @@ export async function getCategories(): Promise<Category[]> {
     const categories = await response.json();
     return getCategoriesMapper(categories);
   } catch {
-    throw new Error("Categories not found");
+    throw new Error("An error occurred while fetching categories");
   }
 }

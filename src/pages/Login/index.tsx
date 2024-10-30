@@ -6,7 +6,7 @@ import { AuthContext } from "@root/contexts/AuthContext";
 import LoginForm from "@components/organisms/LoginForm/index";
 import Dialog from "@components/molecules/Dialog";
 
-import { loginUser } from "@services/auth.services";
+import { loginUser } from "@root/services/auth.service";
 
 import toast, { Toaster } from "react-hot-toast";
 

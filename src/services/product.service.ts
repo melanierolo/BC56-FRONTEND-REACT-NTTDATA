@@ -12,6 +12,6 @@ export async function getProducts(): Promise<Product[]> {
     const products = await response.json();
     return getProductsMapper(products);
   } catch {
-    throw new Error("Product not found");
+    throw new Error("An error occurred while fetching products");
   }
 }

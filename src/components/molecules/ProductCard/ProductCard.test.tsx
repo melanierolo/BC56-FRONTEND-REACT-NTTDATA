@@ -10,8 +10,6 @@ describe("ProductCard component", () => {
     render(<ProductCard product={mockProduct} onAddToCart={mockOnAddToCart} />);
 
   it("should render product details correctly", () => {
-    console.log("mockProduct:", mockProduct);
-    console.log("USD_CURRENCY:", USD_CURRENCY);
     renderComponent();
 
     expect(screen.getByText(mockProduct.title)).toBeInTheDocument();
