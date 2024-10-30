@@ -11,15 +11,16 @@ export const loginUser = async (username: string, password: string) => {
       }),
     });
     if (!response.ok) {
-      const errorData = await response.json();
-      return { success: false, message: errorData.message || "Authentication error" };
+      return {
+        success: false,
+        status: response.status,
+      };
     }
     const data = await response.json();
-    return { success: true, data };
+    return { success: true, data, status: response.status };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : "An unexpected error ocurred";
 
-    console.error("Login failed: ", errorMessage);
     return { success: false, message: errorMessage };
   }
 };

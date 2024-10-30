@@ -17,12 +17,12 @@ interface FormValues {
   password: string;
 }
 
-const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
-  const initialValues: FormValues = {
-    username: "",
-    password: "",
-  };
+const initialValues: FormValues = {
+  username: "",
+  password: "",
+};
 
+const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
   const validate = (values: typeof initialValues) => {
     const errors: Partial<typeof initialValues> = {};
 
@@ -46,15 +46,14 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
 
   return (
     <Formik initialValues={initialValues} validate={validate} onSubmit={handleSubmit}>
-      {({ handleChange, setFieldValue, errors }) => (
+      {({ handleChange, setFieldValue, errors, touched }) => (
         <Form className="login-form">
           <TextInput
             label="Username"
             name="username"
             type="username"
             placeholder="Enter your username"
-            required
-            hasError={!!errors.username}
+            hasError={!!(errors.username && touched.username)}
             errorMessage={errors.username}
             onChange={(e) => {
               handleChange(e);
@@ -66,8 +65,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
             name="password"
             type="password"
             placeholder="Enter your password"
-            required
-            hasError={!!errors.password}
+            hasError={!!(errors.password && touched.password)}
             errorMessage={errors.password}
             onChange={(e) => {
               handleChange(e);

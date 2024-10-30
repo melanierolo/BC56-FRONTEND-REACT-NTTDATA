@@ -7,6 +7,8 @@ import LoginForm from "@components/organisms/LoginForm/index";
 
 import { loginUser } from "@services/auth.services";
 
+import toast, { Toaster } from "react-hot-toast";
+
 import "./style.css";
 
 const LoginPage: FC = () => {
@@ -17,14 +19,17 @@ const LoginPage: FC = () => {
     try {
       const result = await loginUser(username, password);
       if (result.success) {
-        //console.log(`Login successful: ${JSON.stringify(result.data)}`);
         login(result.data.accessToken, result.data.firstName);
         navigate("/products");
       } else {
-        console.error(result.message || "Incorrect username or password");
+        if (result.status === 400) {
+          toast.error("Incorrect username or password");
+        } else {
+          toast.error("Error. Please try again.");
+        }
       }
     } catch (error) {
-      console.error("An unexpected error ocurred.");
+      toast.error("An unexpected error ocurred.");
     }
   };
 
@@ -34,6 +39,7 @@ const LoginPage: FC = () => {
         <h2 className="login__title">Sign in</h2>
         <LoginForm onSubmit={handleLoginSubmit} />
       </div>
+      <Toaster />
     </main>
   );
 };
