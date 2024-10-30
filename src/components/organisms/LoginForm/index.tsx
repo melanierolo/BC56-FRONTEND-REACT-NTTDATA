@@ -10,6 +10,7 @@ import "./style.css";
 
 interface LoginFormProps {
   onSubmit: (username: string, password: string) => Promise<void>;
+  onForgotPassword: () => void;
 }
 
 interface FormValues {
@@ -22,7 +23,7 @@ const initialValues: FormValues = {
   password: "",
 };
 
-const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
+const LoginForm: FC<LoginFormProps> = ({ onSubmit, onForgotPassword }) => {
   const validate = (values: typeof initialValues) => {
     const errors: Partial<typeof initialValues> = {};
 
@@ -72,7 +73,24 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
               setFieldValue("password", e.target.value);
             }}
           />
-          <Button color="primary" size="medium" fullWidth={true} type="submit" children="Log In" />
+          <div className="login-form__actions">
+            <div className="login-form__btn-forgot">
+              <Button
+                color="link"
+                size="auto"
+                children="Forgot password?"
+                type="button"
+                onClick={onForgotPassword}
+              />
+            </div>
+            <Button
+              color="primary"
+              size="medium"
+              fullWidth={true}
+              type="submit"
+              children="Log In"
+            />
+          </div>
         </Form>
       )}
     </Formik>

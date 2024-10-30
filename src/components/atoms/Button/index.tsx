@@ -1,8 +1,8 @@
-import React, { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import "./style.css";
 
-export type ColorType = "primary" | "secondary" | "none";
-export type SizeType = "small" | "medium" | "large";
+export type ColorType = "primary" | "secondary" | "none" | "link";
+export type SizeType = "small" | "medium" | "large" | "auto";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: ColorType;
@@ -10,12 +10,18 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
 }
 
-const colors = { primary: "btn--primary", secondary: "btn--secondary", none: "btn--none" };
+const colors = {
+  primary: "btn--primary",
+  secondary: "btn--secondary",
+  none: "btn--none",
+  link: "btn--link",
+};
 
 const sizes = {
   small: "btn--small",
   medium: "btn--medium",
   large: "btn--large",
+  auto: "btn--auto",
 };
 
 const Button: FC<ButtonProps> = (props) => {

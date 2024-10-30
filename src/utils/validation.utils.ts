@@ -2,6 +2,7 @@ export const RegexPatterns = {
   PERSON_NAME: /^([A-Za-záéíóúÁÉÍÓÚñÑ\s]{2,})?$/,
   PERU_PHONE_NUMBER: /^9\d{8}$/,
   PASSWORD: /^.+$/, // no empty password
+  EMAIL: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 };
 
 export const isValidPersonName = (personName: string) => RegexPatterns.PERSON_NAME.test(personName);
@@ -19,4 +20,8 @@ export const isValidUsername = (username: string) => {
 
 export const isValidPassword = (password: string): boolean => {
   return RegexPatterns.PASSWORD.test(password);
+};
+
+export const isValidEmail = (email: string): boolean => {
+  return RegexPatterns.EMAIL.test(email);
 };

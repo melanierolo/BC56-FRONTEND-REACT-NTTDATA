@@ -18,6 +18,7 @@
   height: 100%;
   background: rgba(0, 25, 70, 0.8);
 }
+
 .dialog__img {
   width: 6rem;
   height: 6rem;
@@ -30,13 +31,30 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 10;
-  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
 
+.dialog__content--full {
+  flex-grow: 0.8;
+}
+
+.dialog__content--medium {
+  flex: 0.5;
+}
+
+.dialog__children {
+  width: 90%;
+}
+
 .dialog__message {
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .dialog__content--medium {
+    flex: 0.8;
+  }
 }

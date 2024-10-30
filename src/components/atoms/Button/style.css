@@ -33,6 +33,14 @@
   border: none;
 }
 
+.btn--link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .btn--small {
   width: 80px;
   height: 30px;
@@ -46,6 +54,11 @@
 .btn--large {
   width: 200px;
   height: 50px;
+}
+
+.btn--auto {
+  width: auto;
+  padding: 0.5rem;
 }
 
 .btn--full-width {
