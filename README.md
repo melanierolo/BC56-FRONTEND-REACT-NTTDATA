@@ -2,18 +2,18 @@
 
 ## Descripción
 
-Este proyecto es un mini marketplace implementado con **TypeScript**, **Vite** y **React**. Los usuarios pueden buscar productos, filtrar por categoría y agregar productos a un carrito de compras. Además, se utilizó la API pública de [DummyJSON](https://dummyjson.com/docs/products#products-all) para obtener los productos y categorías.
+Este proyecto es un mini marketplace desarrollado con **TypeScript**, **Vite** y **React**, que permite a los usuarios buscar productos, filtrar por categoría y agregar artículos al carrito. Utiliza la API pública de [DummyJSON](https://dummyjson.com/docs/products#products-all) para obtener datos y cuenta con autenticación mediante el servicio de login de DummyJSON, validando campos y mostrando mensajes de error personalizados. También incluye un enlace "Olvidé Contraseña" que abre una ventana modal para ingresar el correo electrónico y mostrar un mensaje de alerta.
 
 ## Funcionalidades
 
-- **Carga dinámica de productos**: Los productos se cargan desde DummyJSON y se muestran en la página.
+- **Carga Dinámica de Productos**: Los productos se cargan desde DummyJSON ([https://dummyjson.com/docs/products#products-all](https://dummyjson.com/docs/products#products-all)) y se muestran en la página.
 - **Búsqueda**: Los usuarios pueden buscar productos utilizando una caja de búsqueda, filtrando automáticamente los resultados a medida que escriben.
-- **Filtrado por categorías**: Permite a los usuarios filtrar la lista de productos según la categoría seleccionada.
-- **Contador de carrito**: Incrementa el contador de productos en el carrito cada vez que se hace clic en "Add to Cart".
-- **Consumo de servicios web**: Utiliza la API Fetch para obtener datos, empleando `async` y `await` para manejar las solicitudes de manera eficiente.
-- **Sin uso de bibliotecas externas**: El proyecto está diseñado sin librerías de terceros, utilizando solo código nativo de JavaScript y TypeScript.
-- **Configuraciones de calidad de código**: Se han añadido configuraciones de Prettier y ESLint para garantizar consistencia en el estilo y detectar errores, además de alias para optimizar las rutas de importación.
-- **Página de Resumen del Carrito**: Se ha creado una nueva página llamada **cart**, donde los usuarios pueden:
+- **Filtrado por Categorías**: Permite a los usuarios filtrar la lista de productos según la categoría seleccionada.
+- **Contador de Carrito**: Incrementa el contador de productos en el carrito cada vez que se hace clic en "Agregar al Carrito".
+- **Consumo de Servicios Web**: Utiliza la API Fetch para obtener datos, empleando `async` y `await` para manejar las solicitudes de manera eficiente.
+- **Sin Uso de Bibliotecas Externas**: El proyecto está diseñado sin librerías de terceros, utilizando solo código nativo de JavaScript y TypeScript.
+- **Configuraciones de Calidad de Código**: Se han añadido configuraciones de Prettier y ESLint para garantizar consistencia en el estilo y detectar errores, además de alias para optimizar las rutas de importación.
+- **Página de Resumen del Carrito**: Se ha creado una nueva página llamada **carrito**, donde los usuarios pueden:
   - Visualizar la lista de productos agregados al carrito.
   - Eliminar, agregar o reducir la cantidad de elementos en el carrito.
   - Mostrar la imagen en miniatura del producto, nombre, precio, cantidad con controles de incremento y decremento, y un botón para eliminar.
@@ -21,7 +21,13 @@ Este proyecto es un mini marketplace implementado con **TypeScript**, **Vite** y
   - Los botones de incremento y decremento modificarán la cantidad especificada y actualizarán el ícono del carrito.
   - El botón eliminar eliminará el producto de la tabla y actualizará el contador del ícono del carrito.
   - El precio total se actualizará en base a la cantidad de productos en la tabla.
-- **Pruebas unitarias**: Se han implementado pruebas unitarias en el proyecto utilizando Jest y Testing Library, cubriendo las principales funcionalidades y componentes.
+- **Autenticación de Usuario**: 
+  - Implementación de la pantalla de login que permite a los usuarios iniciar sesión utilizando el servicio de autenticación ([https://dummyjson.com/docs/auth#auth-login](https://dummyjson.com/docs/auth#auth-login)).
+  - Validación de los campos del formulario de login, con mensajes de error en caso de campos vacíos.
+  - Control de errores de autenticación con mensajes personalizados para el usuario.
+  - Uso de la biblioteca `react-hot-toast` para manejar notificaciones personalizadas en la aplicación. Esta librería permite mostrar mensajes emergentes de manera sencilla y efectiva, mejorando la experiencia del usuario al proporcionar alertas claras
+  - Opción de "Olvidé Contraseña" que abre una modal para recuperación de contraseña, con validación de formato de correo electrónico.
+- **Pruebas Unitarias**: Se han implementado pruebas unitarias en el proyecto utilizando `Jest` y `Testing Library`, cubriendo las principales funcionalidades y componentes.
 
 ## Estructura del Proyecto
 
@@ -39,12 +45,17 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
   │   │   ├── /icons
   │   │   ├── /images
   │   │   └── /vectors
-  │   ├── /components              # Carpeta para los componentes que sigue la metodología de atomic design.
+  │   ├── /hooks               # Custom hooks de la aplicación
+  │   │   ├── useDistricts.ts       # Hook para manejar el estado de distritos, cargando datos desde un archivo y brindando opciones para selección.
+  │   │   ├── useForm.ts            # Hook para gestionar formularios, permitiendo el manejo de datos y validaciones de manera sencilla.
+  │   │   └── usePagination.ts      # Hook para implementar paginación en listas, mejorando la experiencia de usuario en la visualización de datos.
+  │   ├── /components       # Carpeta para los componentes que sigue la metodología de atomic design.
   │   │   ├── /atoms
   │   │   ├── /molecules
   │   │   └── /organisms
   │   ├── /contexts                # Manejo de contextos globales.
   │   │   └── CartContext.tsx
+  |   |    ....
   │   ├── /data                    # Datos estáticos y definiciones.
   │   │   ├── districts-data.d.ts
   │   │   └── districts-data.js
@@ -60,15 +71,23 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
   │   │   ├── Cart
   │   │   ├── Home
   │   │   ├── Login
-  │   │   └── Products
-  │   │       └── ProductsRoutes.tsx
+  │   │   ├── Products
+  │   │   └── ProductsRoutes.tsx
+  │   ├── router/
+  │   │   ├── PrivateRoutes.tsx // HOC que gestiona el acceso a rutas privadas
+  │   │   └── PublicRoutes.tsx  // HOC que gestiona el acceso a rutas públicas
   │   ├── /services                # Maneja llamadas a la API y gestiona el almacenamiento local (localStorage).
+  │   │   ├── auth.service.ts
   │   │   ├── category.service.ts
   │   │   ├── local-storage.service.ts
   │   │   └── product.service.ts
-  │   ├── /store                   # Manejo del estado del carrito.
-  │   │   ├── cartActions.ts
-  │   │   └── cartReducer.ts
+  │   ├── /store             # Estado de la aplicación utilizando reducers
+  │   │   ├── /auth            # Estado de autenticación
+  │   │   │   ├── authActions.ts 
+  │   │   │   └── authReducer.ts 
+  │   │   └── /cart            # Estado del carrito de compras
+  │   │        ├── cartActions.ts 
+  │   │        └── cartReducer.ts   
   │   ├── /utils                   # Funciones puras que son sin estado y no dependen de ningún estado externo.
   │   │   └── validation.utils.ts
   │   ├── App.tsx                  # Componente raíz.
@@ -94,6 +113,8 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
 - Se ha mantenido la organización de carpetas según las funciones de cada una, facilitando la escalabilidad y mantenibilidad del proyecto.
 - La carpeta helpers ahora incluye funciones que implementan la lógica de negocio, mientras que utils contiene funciones puras y stateless.
 - La carpeta contexts se ha añadido para manejar el contexto global, específicamente para el carrito.
+- Se ha implementado la carpeta router, que contiene los HOCs PrivateRoutes y PublicRoutes. Estos componentes gestionan el acceso a las rutas de la aplicación, garantizando que las rutas privadas solo sean accesibles para usuarios autenticados y permitiendo el acceso sin restricciones a las rutas públicas.
+- Se ha optado por no utilizar localStorage ni sessionStorage directamente en los reducers cartReducer y authReducer, con el fin de preservar la pureza de las funciones. En su lugar, la gestión del almacenamiento local se ha trasladado al provider.
 
 ## Prototipo
 
