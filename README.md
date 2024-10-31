@@ -23,16 +23,6 @@ Este proyecto es un mini marketplace implementado con **TypeScript**, **Vite** y
   - El precio total se actualizará en base a la cantidad de productos en la tabla.
 - **Pruebas unitarias**: Se han implementado pruebas unitarias en el proyecto utilizando Jest y Testing Library, cubriendo las principales funcionalidades y componentes.
 
-## Migración a React + TypeScript + Vite
-
-Este proyecto ha sido migrado de JavaScript a **React** y **TypeScript**, siguiendo los siguientes lineamientos:
-
-- **Uso de hooks**: Se han utilizado `useEffect` y `useState` correctamente para manejar el estado y los efectos secundarios en los componentes.
-- **Arquitectura de carpetas escalable**: La estructura del proyecto está organizada en carpetas que separan los assets, servicios,dominio,mappers, los componentes, las páginas y los utilitarios, asegurando la escalabilidad y mantenibilidad del código.
-- **Tipos fuertes**: Se han definido interfaces y tipos para garantizar que los datos se manejen correctamente en toda la aplicación, evitando el uso de `any`.
-- **Estructura de Archivos**: La lógica de negocio se ha separado de las definiciones de estructuras de datos, organizando el código en carpetas como `assets`,`components`,`domain`,`utilities`, `services`, y `mappers`.
-- **Patrón de Mappers**: Se implementó un patrón de mappers para transformar las respuestas de los servicios en objetos de tipo `Product` y `Category`, lo que facilita la manipulación de datos en la aplicación.
-
 ## Estructura del Proyecto
 
 La arquitectura del proyecto está organizada de la siguiente manera, garantizando una clara separación de responsabilidades:
@@ -126,7 +116,29 @@ Se ha agregado una nueva página, la cual permite visualizar la lista de product
 
 ## Implementación del Proyecto
 
-A continuación se muestran capturas de la implemenación:
+En esta sección se muestra las imágenes de la implementación.
+
+### Home
+
+![home--desktop](./src/assets/design/home-page-desktop--implementation.png)
+
+### Products
+
+![products-page--tablet](./src/assets/design/products-page-desktop--implementation.png)
+
+### Cart
 
 ![cart-page--desktop](./src/assets/design/cart-page-desktop--implementation.png)
-![cart-page--tablet](./src/assets/design/cart-page-tablet--implementation.png)
+
+### Login
+
+![login--desktop](./src/assets/design/login-page-desktop--implementation.png)
+![login-error-1--desktop](./src/assets/design/login-page-error-desktop--implementation.png)
+![login-error-2-desktop](./src/assets/design/login-page-error-2-desktop--implementation.png)
+
+### Dialog
+
+![forgot-password-desktop](./src/assets/design/forgot-password-desktop--implementation.png)
+
+![forgot-password-error-desktop](./src/assets/design/forgot-password-error-desktop--implementation.png)
+![forgot-password-error-desktop](./src/assets/design/forgot-password-success--implementation.png)
