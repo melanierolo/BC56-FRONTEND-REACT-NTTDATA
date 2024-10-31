@@ -112,7 +112,7 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
 
 - Se ha mantenido la organización de carpetas según las funciones de cada una, facilitando la escalabilidad y mantenibilidad del proyecto.
 - La carpeta helpers ahora incluye funciones que implementan la lógica de negocio, mientras que utils contiene funciones puras y stateless.
-- La carpeta contexts se ha añadido para manejar el contexto global, específicamente para el carrito.
+- La carpeta contexts se ha añadido para manejar el contexto global.
 - Se ha implementado la carpeta router, que contiene los HOCs PrivateRoutes y PublicRoutes. Estos componentes gestionan el acceso a las rutas de la aplicación, garantizando que las rutas privadas solo sean accesibles para usuarios autenticados y permitiendo el acceso sin restricciones a las rutas públicas.
 - Se ha optado por no utilizar localStorage ni sessionStorage directamente en los reducers cartReducer y authReducer, con el fin de preservar la pureza de las funciones. En su lugar, la gestión del almacenamiento local se ha trasladado al provider.
 
@@ -120,10 +120,21 @@ La arquitectura del proyecto está organizada de la siguiente manera, garantizan
 
 Se desarrolló un prototipo de alta fidelidad utilizando la herramienta Figma en donde se ha agregado la página . En este proceso, se implementaron conceptos de Atomic Design para estructurar los elementos de la página de manera eficiente y coherente.
 
-![Desktop-Home](./src/assets/design/Desktop-Home.png)
-![Desktop-products](./src/assets/design/Desktop-products.png)
-![Desktop-Home](./src/assets/design/Desktop-products-not-found.png)
+**LINK:** [Ver prototipo de alta fidelidad en Figma](https://www.figma.com/proto/TMCcAkrrzbQA4suediBIO3/marketplace-webapp?node-id=2-14&node-type=frame&t=dXskumLnmc50er9v-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A2)
+
+### Atomic design
+
+**LINK:** [Ver componentes en Figma](https://www.figma.com/proto/TMCcAkrrzbQA4suediBIO3/marketplace-webapp?node-id=1-2&node-type=frame&t=Jy0BZqP5YTZzJhsw-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
+
 ![Figma-elements](./src/assets/design/figma-elements.png)
+
+### Home
+![Desktop-Home](./src/assets/design/Desktop-Home.png)
+
+### Products
+![Desktop-products](./src/assets/design/Desktop-products.png)
+![Desktop-products-not-found](./src/assets/design/Desktop-products-not-found.png)
+
 ![Desktop-Home-mobile](./src/assets/design/Desktop-Home-mobile.PNG)
 
 ### Página Resumen
@@ -131,9 +142,6 @@ Se desarrolló un prototipo de alta fidelidad utilizando la herramienta Figma en
 Se ha agregado una nueva página, la cual permite visualizar la lista de productos agregados al carrito, dándole la opción al usuario de poder eliminar, agregar o reducir productos. Por otro lado, la página tiene un formulario sobre la información de envío, para el proceso de compra.También, se tiene la página en el caso de que no se ha agregado ningún producto.
 
 ![Desktop-summary-page](./src/assets/design/Desktop-summary-page.png)
-![Desktop-empty-summary](./src/assets/design/Desktop-empty-summary.png)
-
-**LINK:** [Ver prototipo de alta fidelidad en Figma](https://www.figma.com/proto/TMCcAkrrzbQA4suediBIO3/marketplace-webapp?node-id=2-14&node-type=frame&t=dXskumLnmc50er9v-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A2)
 
 ## Implementación del Proyecto
 
